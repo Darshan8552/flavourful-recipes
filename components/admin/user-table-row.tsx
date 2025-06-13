@@ -34,7 +34,20 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
 
-const UserTableRow = ({ users }: any) => {
+type User = {
+  _id: string;
+  name?: string;
+  email: string;
+  role: string;
+  emailVerified?: boolean;
+  createdAt?: string;
+};
+
+interface UserTableRowProps {
+  users: User[];
+}
+
+const UserTableRow = ({ users }: UserTableRowProps) => {
   const [loadingStates, setLoadingStates] = useState<{
     [key: string]: { role?: boolean; delete?: boolean };
   }>({});
@@ -89,7 +102,7 @@ const UserTableRow = ({ users }: any) => {
 
   return (
     <TableBody>
-      {users.map((user: any) => (
+      {users.map((user: User) => (
         <TableRow
           key={user._id}
           className="border-[#505050] hover:bg-[#333333] transition-colors"

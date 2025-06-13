@@ -22,7 +22,7 @@ const ChangePassword = () => {
           <div className="shrink-0">
             <button
               className="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-8 px-4 bg-[#223649] text-white text-sm font-medium leading-normal w-fit"
-              onClick={(e) => setIsChangePasswordOpen((prev) => !prev)}
+              onClick={() => setIsChangePasswordOpen((prev) => !prev)}
             >
               <span className="truncate">Change</span>
             </button>

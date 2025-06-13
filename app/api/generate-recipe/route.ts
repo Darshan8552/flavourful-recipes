@@ -43,8 +43,7 @@ export async function POST(req: NextRequest) {
       contents: imagePrompt,
       config: {
         responseModalities: [Modality.TEXT, Modality.IMAGE],
-        aspect_ratio: "4:3",
-      }  as any,
+      },
     });
 
     const imageData =

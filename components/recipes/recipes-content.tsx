@@ -24,7 +24,7 @@ const RecipesContent = ({
               : "No recipes found"}
             {filters.query && (
               <span className="ml-2">
-                for "<span className="text-blue-400">{filters.query}</span>"
+                for &quot;<span className="text-blue-400">{filters.query}</span>&quot;
               </span>
             )}
           </p>

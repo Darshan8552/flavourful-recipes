@@ -13,6 +13,7 @@ import { Label } from "@/components/ui/label";
 import LikeButton from "@/components/ui/like-button";
 import { getSession } from "@/lib/auth/auth";
 import { Instruction } from "@/lib/types/auth-types";
+import { Types } from "mongoose";
 import Image from "next/image";
 
 export default async function Page({ params }: { params: { id: string } }) {
@@ -25,10 +26,12 @@ export default async function Page({ params }: { params: { id: string } }) {
   const category = await getCategoryName(recipe.category.toString());
   const user = await findById(userId);
   const isLiked = recipe?.likes?.some(
-    (like: any) => like.toString() === userId
+    (like: Types.ObjectId) => like.toString() === userId
   );
   const isSaved =
-    user?.savedRecipes?.some((saved: any) => saved.toString() === id) || false;
+    user?.savedRecipes?.some(
+      (saved: Types.ObjectId) => saved.toString() === id
+    ) || false;
 
   const comments = await getComments(id);
 
@@ -71,7 +74,7 @@ export default async function Page({ params }: { params: { id: string } }) {
               {category}
             </p>
           </div>
-          
+
           <div className="flex gap-3">
             <LikeButton
               recipeId={recipe._id.toString()}
@@ -150,11 +153,11 @@ export default async function Page({ params }: { params: { id: string } }) {
           userName={user?.name || "Anonymous"}
           initialComments={comments}
         />
-        <SimilarRecipes 
-        categoryId={recipe.category.toString()}
-        currentRecipeId={recipe._id.toString()}
-        categoryName={category}
-      />
+        <SimilarRecipes
+          categoryId={recipe.category.toString()}
+          currentRecipeId={recipe._id.toString()}
+          categoryName={category}
+        />
       </div>
     </section>
   );

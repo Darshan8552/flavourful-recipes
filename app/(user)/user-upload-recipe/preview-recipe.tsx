@@ -5,11 +5,6 @@ import { IRecipeUploadData } from "@/lib/types/auth-types";
 import Image from "next/image";
 import React from "react";
 
-interface Instruction {
-  subheading: string;
-  steps: string | string[];
-}
-
 interface PreviewRecipeProps {
   recipe: Omit<IRecipeUploadData, "imageId" | "_id"> & { views?: number };
 }

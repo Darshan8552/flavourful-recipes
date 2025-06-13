@@ -1,7 +1,7 @@
 "use client";
 
 import type React from "react";
-import { useState, useRef, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -33,8 +33,6 @@ export function VerifyForm() {
   const [isResending, setIsResending] = useState(false);
   const [resendSuccess, setResendSuccess] = useState(false);
   const [resendCooldown, setResendCooldown] = useState(0);
-
-  const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
 
   const form = useForm<VerifyEmailFormValues>({
     resolver: zodResolver(verifyEmailSchema),
@@ -150,7 +148,7 @@ export function VerifyForm() {
         <div>
           <h2 className="text-lg font-semibold">Check your email</h2>
           <p className="text-sm text-muted-foreground">
-            We've sent a 6-digit verification code to
+            We&apos;ve sent a 6-digit verification code to
           </p>
           <p className="text-sm font-medium">{email}</p>
         </div>
@@ -222,7 +220,7 @@ export function VerifyForm() {
 
       <div className="text-center space-y-4">
         <div className="text-sm text-muted-foreground">
-          Didn't receive the code?
+          Didn&apos;t receive the code?
         </div>
 
         <Button
@@ -251,7 +249,7 @@ export function VerifyForm() {
         </Button>
 
         <div className="text-xs text-muted-foreground">
-          Check your spam folder if you don't see the email
+          Check your spam folder if you don&apos;t see the email
         </div>
       </div>
     </div>

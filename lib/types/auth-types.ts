@@ -157,7 +157,7 @@ export interface TokenPayload {
 export interface TokenVerificationResult {
   valid: boolean;
   payload?: TokenPayload;
-  error?: any;
+  error?: string;
 }
 
 export type UserRole = "user" | "admin" | "moderator";
@@ -172,7 +172,7 @@ export interface EmailOptions {
 
 export interface EmailResponse {
   success: boolean;
-  error?: any;
+  error?: string;
 }
 
 export type FormState =

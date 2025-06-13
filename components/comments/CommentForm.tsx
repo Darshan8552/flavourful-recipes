@@ -3,6 +3,7 @@
 import { useState, useTransition } from "react";
 import { Send } from "lucide-react";
 import { addComment } from "@/actions/comment-actions";
+import Image from "next/image";
 
 interface CommentFormProps {
   recipeId: string;
@@ -37,7 +38,7 @@ export default function CommentForm({
 
   return (
     <div className="flex gap-3 p-4 items-center border-gray-300 dark:border-gray-600  rounded-lg">
-      <img
+      <Image
         src={userImage}
         alt={userName}
         className="w-10 h-10 rounded-full object-cover flex-shrink-0"

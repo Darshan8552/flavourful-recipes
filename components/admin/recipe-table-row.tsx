@@ -80,6 +80,7 @@ const RecipeTableRow = ({ recipes }: RecipeTableRowProps) => {
         toast.error(result.error || "Failed to update recipe status");
       }
     } catch (error) {
+      console.error(error);
       toast.error("An error occurred while updating the recipe");
     } finally {
       setIsUpdating(null);
@@ -97,6 +98,7 @@ const RecipeTableRow = ({ recipes }: RecipeTableRowProps) => {
         toast.error(result.error || "Failed to delete recipe");
       }
     } catch (error) {
+      console.error(error);
       toast.error("An error occurred while deleting the recipe");
     } finally {
       setIsDeleting(null);
@@ -292,7 +294,7 @@ const RecipeTableRow = ({ recipes }: RecipeTableRowProps) => {
                       </AlertDialogTitle>
                       <AlertDialogDescription className="text-[#ababab]">
                         This action cannot be undone. This will permanently delete the recipe
-                        "{recipe.title}" and remove all associated data.
+                        &quot;{recipe.title}&quot; and remove all associated data.
                       </AlertDialogDescription>
                     </AlertDialogHeader>
                     <AlertDialogFooter>

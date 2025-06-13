@@ -286,7 +286,7 @@ const GlobalSearch: React.FC<GlobalSearchProps> = ({
               }`}>
                 <div className="flex items-center">
                   <Clock className="w-3 h-3 mr-1" />
-                  Press Enter to search "{query}"
+                  Press Enter to search &quot;{query}&quot;
                 </div>
               </div>
             </>

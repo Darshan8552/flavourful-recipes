@@ -33,7 +33,7 @@ export default async function Home() {
           className="object-cover object-center w-full h-full"
         />
         <div className="absolute inset-0 bg-black/30" />
-        
+
         {/* Hero Content */}
         <div className="absolute flex flex-col gap-2 text-center px-4 max-w-4xl mx-auto">
           <h1 className="text-white text-2xl sm:text-4xl lg:text-6xl font-black leading-tight tracking-[-0.033em]">
@@ -44,21 +44,24 @@ export default async function Home() {
             dishes.
           </h2>
         </div>
-        
+
         {/* Hero Buttons */}
         <div className="flex flex-col sm:flex-row gap-3 justify-center absolute bottom-8 sm:bottom-1/4 px-4 w-full max-w-md sm:max-w-none md:bottom-1/6 ">
           <button className="flex min-w-[120px] max-w-[280px] sm:max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 md:h-12 md:px-5 bg-[#50d22c] text-[#131712] text-sm font-bold leading-normal tracking-[0.015em] md:text-base md:font-bold md:leading-normal md:tracking-[0.015em] mx-auto sm:mx-0">
             <span className="truncate">Explore Recipes</span>
           </button>
           <button className="flex min-w-[120px] max-w-[280px] sm:max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 md:h-12 md:px-5 bg-[#2d372a] text-white text-sm font-bold leading-normal tracking-[0.015em] md:text-base md:font-bold md:leading-normal md:tracking-[0.015em] mx-auto sm:mx-0">
-            {session ? <Link href="/user-upload-recipe">Upload Recipe</Link> : <span className="truncate">Sign Up</span>}
+            {session ? (
+              <Link href="/user-upload-recipe">Upload Recipe</Link>
+            ) : (
+              <span className="truncate">Sign Up</span>
+            )}
           </button>
         </div>
       </div>
 
       {/* Main Content Container */}
       <div className="flex flex-col items-center justify-center w-full max-w-[1100px] mx-auto my-6 sm:my-10 px-4">
-        
         {/* Category Tags */}
         <div className="flex gap-2 sm:gap-3 p-3 flex-wrap justify-center">
           <div className="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-[#2d372a] pl-3 pr-3 sm:pl-4 sm:pr-4">
@@ -90,7 +93,7 @@ export default async function Home() {
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-0">
             {(recipes ?? []).map((recipe) => (
-              <Link 
+              <Link
                 href={`/recipes/${recipe._id}`}
                 key={recipe._id}
                 className="flex flex-col justify-center p-3 sm:p-4 space-y-2"
@@ -107,8 +110,11 @@ export default async function Home() {
                   {recipe.title}
                 </h3>
                 <p className="text-[#a5b6a0] text-xs font-normal leading-normal">
-                  Difficulty: {recipe.difficulty.replace(/\b\w/g, char => char.toUpperCase())} | Time:{" "}
-                  {formatMinutes(recipe.cookingTime)} | Type:{" "}
+                  Difficulty:{" "}
+                  {recipe.difficulty.replace(/\b\w/g, (char) =>
+                    char.toUpperCase()
+                  )}{" "}
+                  | Time: {formatMinutes(recipe.cookingTime)} | Type:{" "}
                   {recipe.type === "veg" ? "Vegetarian" : "Non-Vegetarian"}
                 </p>
               </Link>
@@ -220,8 +226,22 @@ export default async function Home() {
             Top Recipe Categories
           </h2>
           <div className="flex gap-2 sm:gap-3 p-3 flex-wrap justify-center">
-            {["Breakfast", "Lunch", "Dinner", "Desserts", "Appetizers", "Salads", "Soups", "Drinks", "Baking", "Grilling"].map((category) => (
-              <div key={category} className="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-[#2d372a] pl-3 pr-3 sm:pl-4 sm:pr-4">
+            {[
+              "Breakfast",
+              "Lunch",
+              "Dinner",
+              "Desserts",
+              "Appetizers",
+              "Salads",
+              "Soups",
+              "Drinks",
+              "Baking",
+              "Grilling",
+            ].map((category) => (
+              <div
+                key={category}
+                className="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-[#2d372a] pl-3 pr-3 sm:pl-4 sm:pr-4"
+              >
                 <p className="text-white text-xs sm:text-sm font-medium leading-normal">
                   {category}
                 </p>
@@ -229,7 +249,6 @@ export default async function Home() {
             ))}
           </div>
         </div>
-
         {/* User Review Section */}
         <div className="flex flex-col justify-between w-full max-w-[1100px] mx-auto">
           <h2 className="text-white text-lg sm:text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">
@@ -247,9 +266,9 @@ export default async function Home() {
             <div className="absolute flex w-full items-end justify-between gap-4 p-4 sm:p-6 bottom-0">
               <div className="flex max-w-full sm:max-w-[440px] flex-1 flex-col gap-1">
                 <p className="text-white tracking-light text-lg sm:text-2xl lg:text-3xl font-bold leading-tight">
-                  "FlavourFul Recipes has transformed my cooking! I've
+                  &quot;FlavourFul Recipes has transformed my cooking! I&apos;ve
                   discovered so many new dishes and connected with amazing home
-                  cooks."
+                  cooks.&quot;
                 </p>
                 <p className="text-white text-sm sm:text-md font-medium leading-normal">
                   - Sophia Carter

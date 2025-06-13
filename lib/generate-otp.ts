@@ -15,7 +15,7 @@ export const formatMinutes = (totalMins: number) => {
   }
 };
 
-export function extractAndParseRecipe(raw: string): any {
+export function extractAndParseRecipe(raw: string) {
   const cleaned = raw
     .replace(/^```json\n/, "")
     .replace(/```$/, "")

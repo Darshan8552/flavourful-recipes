@@ -39,7 +39,7 @@ const Dashboard = async () => {
         <div className=" space-y-2">
           <h1 className="text-4xl font-bold text-woodsmoke-200">Admin Dashboard</h1>
           <p className="text-woodsmoke-300">
-            Monitor your platform's performance and user engagement
+            Monitor your platform&apos;s performance and user engagement
           </p>
         </div>
       <Card className="w-full flex mx-auto space-y-8 p-6">

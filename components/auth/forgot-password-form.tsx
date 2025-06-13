@@ -28,10 +28,12 @@ export function ForgotPasswordForm() {
     try {
       // TODO: Implement forgot password server action
       // const result = await forgotPassword(data)
+      console.log(data)
       
       await new Promise((resolve) => setTimeout(resolve, 1000))
 
       setIsSubmitted(true)
+      return { success: true }
     } catch (err) {
       setError("An unexpected error occurred")
       console.error(err)
@@ -50,12 +52,12 @@ export function ForgotPasswordForm() {
         <div className="space-y-2">
           <h2 className="text-lg font-semibold">Check your email</h2>
           <p className="text-sm text-muted-foreground">
-            If an account with that email exists, we've sent you a password reset link.
+            If an account with that email exists, we&apos;ve sent you a password reset link.
           </p>
         </div>
 
         <Alert>
-          <AlertDescription>Check your spam folder if you don't see the email within a few minutes.</AlertDescription>
+          <AlertDescription>Check your spam folder if you don&apos;t see the email within a few minutes.</AlertDescription>
         </Alert>
 
         <Button asChild variant="outline" className="w-full">
@@ -80,7 +82,7 @@ export function ForgotPasswordForm() {
         <div className="space-y-2 text-center">
           <h2 className="text-lg font-semibold">Forgot your password?</h2>
           <p className="text-sm text-muted-foreground">
-            Enter your email address and we'll send you a link to reset your password.
+            Enter your email address and we&apos;ll send you a link to reset your password.
           </p>
         </div>
 
@@ -93,7 +95,7 @@ export function ForgotPasswordForm() {
               <FormControl>
                 <Input type="email" placeholder="name@example.com" autoComplete="email" {...field} />
               </FormControl>
-              <FormDescription>We'll send a password reset link to this email address.</FormDescription>
+              <FormDescription>We&apos;ll send a password reset link to this email address.</FormDescription>
               <FormMessage />
             </FormItem>
           )}

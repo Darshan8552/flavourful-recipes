@@ -2,7 +2,30 @@ import { Clock, Eye, Heart, Users } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-const RecipeCard = ({ recipe }: { recipe: any }) => {
+interface RecipeCategory {
+  name: string;
+}
+
+interface Recipe {
+  _id: string;
+  imageUrl?: string;
+  title: string;
+  type: "veg" | "non-veg";
+  category?: RecipeCategory;
+  description: string;
+  createdBy?: { name?: string };
+  difficulty: string;
+  cookingTime: number;
+  serves: number;
+  likeCount?: number;
+  views?: number;
+}
+
+interface RecipeCardProps {
+  recipe: Recipe;
+}
+
+const RecipeCard = ({ recipe }: RecipeCardProps) => {
   return (
     <Link href={`/recipes/${recipe._id}`} className="group cursor-pointer">
       <div className="bg-white dark:bg-black rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden border dark:border-gray-800 hover:-translate-y-1">

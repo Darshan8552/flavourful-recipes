@@ -3,6 +3,7 @@
 import { useState, useTransition } from "react";
 import { Trash2, MoreHorizontal } from "lucide-react";
 import { deleteComment } from "@/actions/comment-actions";
+import Image from "next/image";
 
 interface CommentItemProps {
   comment: {
@@ -61,7 +62,7 @@ export default function CommentItem({
 
   return (
     <div className="flex gap-3 p-4 dark:hover:border-1 dark:hover:border-dashed hover:border-woodsmoke-300 transition-colors duration-200 mb-4">
-      <img
+      <Image
         src={comment.userId.image}
         alt={comment.userId.name}
         className="w-10 h-10 rounded-full object-cover flex-shrink-0"

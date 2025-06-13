@@ -7,7 +7,7 @@ export default function VerifyPage() {
       <Card className="w-full max-w-md">
         <CardHeader>
           <CardTitle className="text-2xl">Verify Your Email</CardTitle>
-          <CardDescription>We've sent a verification code to your email. Please enter it below.</CardDescription>
+          <CardDescription>We&apos;ve sent a verification code to your email. Please enter it below.</CardDescription>
         </CardHeader>
         <CardContent>
           <VerifyForm />
