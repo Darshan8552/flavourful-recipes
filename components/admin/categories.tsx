@@ -1,0 +1,18 @@
+export const recipeCategories = [
+  { id: "breakfast", label: "Breakfast", emoji: "🌅" },
+  { id: "lunch", label: "Lunch", emoji: "🥗" },
+  { id: "dinner", label: "Dinner", emoji: "🍽️" },
+  { id: "appetizer", label: "Appetizer", emoji: "🥨" },
+  { id: "main-course", label: "Main Course", emoji: "🍖" },
+  { id: "dessert", label: "Dessert", emoji: "🍰" },
+  { id: "snack", label: "Snack", emoji: "🍿" },
+  { id: "beverage", label: "Beverage", emoji: "🥤" },
+  { id: "quick-easy", label: "Quick & Easy", emoji: "⚡" },
+  { id: "healthy", label: "Healthy", emoji: "🥬" },
+  { id: "comfort-food", label: "Comfort Food", emoji: "🤗" },
+  { id: "italian", label: "Italian", emoji: "🇮🇹" },
+  { id: "asian", label: "Asian", emoji: "🥢" },
+  { id: "mexican", label: "Mexican", emoji: "🌮" },
+  { id: "indian", label: "Indian", emoji: "🍛" },
+  { id: "mediterranean", label: "Mediterranean", emoji: "🫒" },
+]
