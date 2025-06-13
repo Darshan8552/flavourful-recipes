@@ -3,7 +3,6 @@ import { getSimilarRecipes } from "@/actions/recipes-action";
 import Image from "next/image";
 import Link from "next/link";
 import { Clock, Eye, Heart } from "lucide-react";
-import { IRecipe } from "@/lib/types/auth-types";
 
 interface SimilarRecipesProps {
   categoryId: string;
@@ -32,7 +31,7 @@ export default async function SimilarRecipes({
       </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {similarRecipes.map((recipe: IRecipe) => (
+        {similarRecipes.map((recipe) => (
           <Link
             href={`/recipes/${recipe._id}`}
             key={recipe._id}

@@ -71,12 +71,12 @@ export async function getComments(recipeId: string) {
   try {
     await connectToDatabase();
 
-    const comments = await CommentModel.find({ recipeId })
+    const rawComments = await CommentModel.find({ recipeId })
       .populate("userId", "name image")
       .sort({ createdAt: -1 })
       .lean();
 
-    return comments.map((comment) => ({
+    return rawComments.map((comment: any) => ({
       ...comment,
       _id: comment._id.toString(),
       userId: {

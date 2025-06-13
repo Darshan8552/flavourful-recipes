@@ -199,9 +199,30 @@ export async function getSimilarRecipes(
       )
       .sort({ likeCount: -1, views: -1 })
       .limit(limit)
-      .lean();
+      .lean()
+      .exec();
 
-    return similarRecipes;
+    // Type assertion and transformation to ensure proper structure
+    return similarRecipes.map((recipe: any) => ({
+      _id: recipe._id.toString(),
+      title: recipe.title,
+      imageUrl: recipe.imageUrl,
+      type: recipe.type,
+      description: recipe.description,
+      cookingTime: recipe.cookingTime,
+      difficulty: recipe.difficulty,
+      likeCount: recipe.likeCount || 0,
+      views: recipe.views || 0,
+      createdBy: recipe.createdBy ? {
+        _id: recipe.createdBy._id?.toString(),
+        name: recipe.createdBy.name
+      } : null,
+      category: recipe.category ? {
+        _id: recipe.category._id?.toString(),
+        name: recipe.category.name
+      } : null,
+      createdAt: recipe.createdAt
+    }));
   } catch (error) {
     console.error("Error fetching similar recipes:", error);
     return [];

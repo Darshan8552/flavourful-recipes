@@ -4,12 +4,12 @@ import RecipeTable from '@/components/admin/recipe-table';
 import React from 'react';
 
 interface RecipeManagementProps {
-  searchParams: {
+  searchParams: Promise<{
     search?: string;
     category?: string;
     status?: string;
     page?: string;
-  };
+  }>;
 }
 
 const RecipeManagement = async ({ searchParams }: RecipeManagementProps) => {

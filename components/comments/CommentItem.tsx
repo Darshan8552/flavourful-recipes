@@ -65,6 +65,8 @@ export default function CommentItem({
       <Image
         src={comment.userId.image}
         alt={comment.userId.name}
+        width={40}
+        height={40}
         className="w-10 h-10 rounded-full object-cover flex-shrink-0"
       />
 

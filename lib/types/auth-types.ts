@@ -33,7 +33,7 @@ export interface IUser extends Document {
 
 export interface Instruction {
   subheading: string;
-  steps: string[];
+  steps: string;
 }
 
 export interface IRecipe extends Document {

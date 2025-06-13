@@ -44,9 +44,9 @@ interface Recipe {
   description: string;
   imageUrl: string;
   createdBy: {
-    _id: string;
-    name: string;
-    email: string;
+    _id?: string;
+    name?: string;
+    email?: string;
   };
   category: {
     _id: string;

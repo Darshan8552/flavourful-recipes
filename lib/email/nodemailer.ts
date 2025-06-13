@@ -38,6 +38,6 @@ export async function sendVerificationEmail(
     return { success: true };
   } catch (error) {
     console.error("Error sending email:", error);
-    return { success: false, error };
+    return { success: false, error: error instanceof Error ? error.message : String(error) };
   }
 }

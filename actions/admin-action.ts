@@ -40,14 +40,14 @@ export async function fetchUsersAction(searchParams?: {
     .lean();
 
   const users = rawUsers.map(user => ({
-    _id: user._id.toString(),
-    name: user.name || '',
-    email: user.email || '',
-    role: user.role || 'user',
-    emailVerified: Boolean(user.emailVerified),
-    createdAt: user.createdAt ? user.createdAt.toISOString() : null,
-    updatedAt: user.updatedAt ? user.updatedAt.toISOString() : null,
-  }));
+  _id: user._id.toString(),
+  name: user.name || '',
+  email: user.email || '',
+  role: user.role || 'user',
+  emailVerified: Boolean(user.emailVerified),
+  createdAt: user.createdAt ? user.createdAt.toISOString() : undefined,
+  updatedAt: user.updatedAt ? user.updatedAt.toISOString() : undefined,
+}));
 
   return {
     users,

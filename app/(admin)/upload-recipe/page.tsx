@@ -89,6 +89,8 @@ const UploadRecipes = () => {
         if (!uploadResponse || !uploadResponse.url) {
           throw new Error("Image upload failed");
         }
+
+        
         const recipeData: IRecipeUploadData = {
           title,
           createdBy: session?.user.id as string,

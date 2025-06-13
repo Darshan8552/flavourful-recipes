@@ -3,11 +3,11 @@ import UsersTable from "@/components/admin/users-table";
 import UserSearch from "@/components/admin/user-search";
 
 interface PageProps {
-  searchParams: {
+  searchParams: Promise<{
     search?: string;
     role?: string;
     verified?: string;
-  };
+  }>;
 }
 
 const UserManagement = async ({ searchParams }: PageProps) => {

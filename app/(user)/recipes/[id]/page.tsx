@@ -16,18 +16,26 @@ import { Instruction } from "@/lib/types/auth-types";
 import { Types } from "mongoose";
 import Image from "next/image";
 
-export default async function Page({ params }: { params: { id: string } }) {
+interface PageProps {
+  params: Promise<{ id: string }>;
+}
+
+export default async function Page({ params }: PageProps) {
   const session = await getSession();
   const userId = session?.user.id as string;
-  const { id } = await params;
+  const { id } = await params; // This line is correct - await the params Promise
+
   const recipe = await getRecipeById(id, userId);
   if (!recipe) return <h1>Recipe not found</h1>;
-  const authorName = await getAuthorName(recipe.createdBy.toString());
-  const category = await getCategoryName(recipe.category.toString());
+
+  const authorName = await getAuthorName(recipe.createdBy!.toString());
+  const category = await getCategoryName(recipe.category!.toString());
   const user = await findById(userId);
+
   const isLiked = recipe?.likes?.some(
     (like: Types.ObjectId) => like.toString() === userId
   );
+
   const isSaved =
     user?.savedRecipes?.some(
       (saved: Types.ObjectId) => saved.toString() === id
@@ -111,8 +119,8 @@ export default async function Page({ params }: { params: { id: string } }) {
         <div className="flex flex-col mt-6 w-full">
           <h1 className="text-2xl font-semibold">Ingredients</h1>
           <div className="mt-4 dark:text-[#a6b3a2]">
-            {recipe.ingredients.map((ingredient: string) => (
-              <div className="flex items-center mb-4" key={ingredient}>
+            {recipe.ingredients.map((ingredient: string, index: number) => (
+              <div className="flex items-center mb-4" key={index}>
                 <Checkbox id={ingredient} />
                 <Label htmlFor={ingredient} className="ml-2">
                   {ingredient}
@@ -134,10 +142,14 @@ export default async function Page({ params }: { params: { id: string } }) {
                     {instruction.subheading}
                   </h1>
                   <ul className="list-disc list-inside ml-8 mt-2 space-y-1">
-                    {instruction.steps.map(
-                      (step: string, stepIndex: number) => (
-                        <li key={stepIndex}>{step}</li>
+                    {Array.isArray(instruction.steps) ? (
+                      instruction.steps.map(
+                        (step: string, stepIndex: number) => (
+                          <li key={stepIndex}>{step}</li>
+                        )
                       )
+                    ) : (
+                      <li>{instruction.steps}</li>
                     )}
                   </ul>
                 </div>
@@ -154,7 +166,7 @@ export default async function Page({ params }: { params: { id: string } }) {
           initialComments={comments}
         />
         <SimilarRecipes
-          categoryId={recipe.category.toString()}
+          categoryId={recipe.category!.toString()}
           currentRecipeId={recipe._id.toString()}
           categoryName={category}
         />

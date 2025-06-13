@@ -11,6 +11,32 @@ interface SearchParams {
   page?: string;
 }
 
+interface PopulatedCategory {
+  _id: string;
+  name: string;
+}
+
+interface PopulatedRecipe {
+  _id: any;
+  title: string;
+  description: string;
+  imageUrl?: string;
+  createdBy?: PopulatedUser;
+  category?: PopulatedCategory;
+  isPublished: boolean;
+  views?: number;
+  likeCount?: number;
+  cookingTime?: number;
+  difficulty?: string;
+  createdAt: Date;
+}
+
+interface PopulatedUser {
+  _id: string;
+  name: string;
+  email: string;
+}
+
 export async function fetchRecipesForAdmin(searchParams: SearchParams) {
   try {
     await connectToDatabase();
@@ -59,21 +85,28 @@ export async function fetchRecipesForAdmin(searchParams: SearchParams) {
       .sort({ createdAt: -1 })
       .skip(skip)
       .limit(limit)
-      .lean();
+      .lean() as PopulatedRecipe[];
 
     const serializedRecipes = recipes.map((recipe) => ({
       _id: recipe._id.toString(),
       title: recipe.title,
       description: recipe.description,
       imageUrl: recipe.imageUrl || "",
-      createdBy: {
+      createdBy: recipe.createdBy ? {
         _id: recipe.createdBy._id.toString(),
         name: recipe.createdBy.name,
         email: recipe.createdBy.email,
+      } : {
+        _id: undefined,
+        name: undefined,
+        email: undefined,
       },
-      category: {
+      category: recipe.category ? {
         _id: recipe.category._id.toString(),
         name: recipe.category.name,
+      } : {
+        _id: "",
+        name: "Uncategorized",
       },
       isPublished: recipe.isPublished,
       views: recipe.views || 0,
