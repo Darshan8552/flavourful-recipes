@@ -4,6 +4,7 @@ import { connectToDatabase } from "@/lib/db/connect";
 import { CategoryModel } from "@/lib/db/models/category";
 import { RecipeModel } from "@/lib/db/models/recipe";
 import { IRecipe } from "@/lib/types/auth-types";
+import { IPopulatedRecipe } from "@/lib/types/recipe-types";
 
 export interface RecipeFilters {
   query?: string;
@@ -18,7 +19,7 @@ export interface RecipeFilters {
 }
 
 export interface RecipeSearchResult {
-  recipes: IRecipe[];
+  recipes: IPopulatedRecipe[];
   totalCount: number;
   currentPage: number;
   totalPages: number;
@@ -132,7 +133,7 @@ export async function fetchRecipesWithFilters(
     const hasPrevPage = currentPage > 1;
 
     return {
-      recipes: recipes as IRecipe[],
+      recipes: recipes as IPopulatedRecipe[],
       totalCount,
       currentPage,
       totalPages,

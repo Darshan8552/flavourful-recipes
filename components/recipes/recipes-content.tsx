@@ -1,17 +1,26 @@
 import {
-  fetchRecipesWithFilters,
   RecipeFilters,
 } from "@/actions/recipes-filter-actions";
 import RecipeCard from "./recipes-card";
 import NoRecipesFound from "@/components/recipes/recipes-no-found";
-import Pagination from "@/components/recipes//pagination";
+import Pagination from "@/components/recipes/pagination";
+import { IPopulatedRecipe } from "@/lib/types/recipe-types";
 
-const RecipesContent = ({
+interface RecipesContentProps {
+  recipesData: {
+    recipes: IPopulatedRecipe[];
+    totalCount: number;
+    currentPage: number;
+    totalPages: number;
+    hasNextPage: boolean;
+    hasPrevPage: boolean;
+  };
+  filters: RecipeFilters;
+}
+
+const RecipesContent: React.FC<RecipesContentProps> = ({
   recipesData,
   filters,
-}: {
-  recipesData: Awaited<ReturnType<typeof fetchRecipesWithFilters>>;
-  filters: RecipeFilters;
 }) => {
   return (
     <div className="flex-1 p-4 lg:p-6">

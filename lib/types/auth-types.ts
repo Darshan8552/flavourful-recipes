@@ -39,14 +39,14 @@ export interface Instruction {
 export interface IRecipe extends Document {
   _id: string;
   title: string;
-  createdBy: import("mongoose").Types.ObjectId;
+  createdBy?: import("mongoose").Types.ObjectId;
   imageId: string;
   imageUrl: string;
   type: "veg" | "non-veg";
   description: string;
   ingredients: string[];
   instructions: Instruction[];
-  category: import("mongoose").Types.ObjectId;
+  category?: import("mongoose").Types.ObjectId;
   cookingTime: number;
   serves: number;
   difficulty: "easy" | "medium" | "hard";

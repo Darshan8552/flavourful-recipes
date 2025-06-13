@@ -1,31 +1,14 @@
 import { Clock, Eye, Heart, Users } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-
-interface RecipeCategory {
-  name: string;
-}
-
-interface Recipe {
-  _id: string;
-  imageUrl?: string;
-  title: string;
-  type: "veg" | "non-veg";
-  category?: RecipeCategory;
-  description: string;
-  createdBy?: { name?: string };
-  difficulty: string;
-  cookingTime: number;
-  serves: number;
-  likeCount?: number;
-  views?: number;
-}
+import React from "react";
+import { IPopulatedRecipe } from "@/lib/types/recipe-types";
 
 interface RecipeCardProps {
-  recipe: Recipe;
+  recipe: IPopulatedRecipe;
 }
 
-const RecipeCard = ({ recipe }: RecipeCardProps) => {
+const RecipeCard: React.FC<RecipeCardProps> = ({ recipe }) => {
   return (
     <Link href={`/recipes/${recipe._id}`} className="group cursor-pointer">
       <div className="bg-white dark:bg-black rounded-lg shadow-md hover:shadow-lg transition-all duration-300 overflow-hidden border dark:border-gray-800 hover:-translate-y-1">
