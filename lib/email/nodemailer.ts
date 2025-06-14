@@ -4,12 +4,27 @@ import type { EmailResponse } from "@/lib/types/auth-types";
 const transporter = nodemailer.createTransport({
   host: process.env.BREVO_HOST || "smtp.example.com",
   port: Number.parseInt(process.env.BREVO_PORT || "587"),
-  secure: process.env.NODE_ENV === "production",
+  secure: process.env.NODE_ENV !== "production",
+  requireTLS: true,
   auth: {
     user: process.env.BREVO_USER || "user@example.com",
     pass: process.env.BREVO_PASSWORD || "password",
   },
+  tls: {
+    ciphers: 'SSLv3',
+    rejectUnauthorized: false
+  }
 });
+
+if (process.env.NODE_ENV === 'development') {
+  transporter.verify((error, success) => {
+    if (error) {
+      console.error('SMTP connection error:', error);
+    } else {
+      console.log('SMTP server is ready to take our messages');
+    }
+  });
+}
 
 export async function sendVerificationEmail(
   email: string,
