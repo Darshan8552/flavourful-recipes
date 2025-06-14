@@ -116,7 +116,7 @@ const FilterRecipesSidebar: React.FC<FilterRecipesSidebarProps> = ({
   };
 
   return (
-    <div className="flex min-h-screen w-full flex-col items-center justify-start bg-black p-6">
+    <div className="flex min-h-screen w-full flex-col items-center justify-start bg-[#F9FAFB] dark:bg-[#0F0F0F] p-6">
       {/* Search Section */}
       <div className="w-full mt-4">
         <GlobalSearch
@@ -128,7 +128,7 @@ const FilterRecipesSidebar: React.FC<FilterRecipesSidebarProps> = ({
 
       {/* Filters Header */}
       <div className="w-full mt-6 flex items-center justify-between">
-        <h1 className="text-xl font-semibold text-white flex items-center gap-2">
+        <h1 className="text-xl font-semibold text-[#111827] dark:text-[#F4F4F5] flex items-center gap-2">
           <Filter className="w-5 h-5" />
           Filters
         </h1>
@@ -137,7 +137,7 @@ const FilterRecipesSidebar: React.FC<FilterRecipesSidebarProps> = ({
             onClick={clearAllFilters}
             variant="ghost"
             size="sm"
-            className="text-red-400 hover:text-red-300 hover:bg-red-400/10"
+            className="text-[#DC2626] dark:text-[#EF4444] hover:text-[#DC2626] dark:hover:text-[#EF4444] hover:bg-[#DC2626]/10 dark:hover:bg-[#EF4444]/10"
           >
             <X className="w-4 h-4 mr-1" />
             Clear
@@ -147,7 +147,7 @@ const FilterRecipesSidebar: React.FC<FilterRecipesSidebarProps> = ({
 
       {/* Recipe Type Filter */}
       <div className="w-full mt-6">
-        <h3 className="text-sm font-medium text-gray-300 mb-3">Recipe Type</h3>
+        <h3 className="text-sm font-medium text-[#4B5563] dark:text-[#A1A1AA] mb-3">Recipe Type</h3>
         <div className="space-y-3">
           <div className="flex items-center space-x-2">
             <Checkbox
@@ -157,7 +157,7 @@ const FilterRecipesSidebar: React.FC<FilterRecipesSidebarProps> = ({
             />
             <label
               htmlFor="veg"
-              className="text-sm text-woodsmoke-200 cursor-pointer"
+              className="text-sm text-[#111827] dark:text-[#F4F4F5] cursor-pointer"
             >
               Vegetarian
             </label>
@@ -172,7 +172,7 @@ const FilterRecipesSidebar: React.FC<FilterRecipesSidebarProps> = ({
             />
             <label
               htmlFor="non-veg"
-              className="text-sm text-woodsmoke-200 cursor-pointer"
+              className="text-sm text-[#111827] dark:text-[#F4F4F5] cursor-pointer"
             >
               Non-Vegetarian
             </label>
@@ -183,23 +183,23 @@ const FilterRecipesSidebar: React.FC<FilterRecipesSidebarProps> = ({
       {/* Category Filter */}
       {categories.length > 0 && (
         <div className="w-full mt-6">
-          <h3 className="text-sm font-medium text-gray-300 mb-3">Category</h3>
+          <h3 className="text-sm font-medium text-[#4B5563] dark:text-[#A1A1AA] mb-3">Category</h3>
           <Select
             value={getSelectValue(filters.category)}
             onValueChange={(value) => handleFilterChange("category", value)}
           >
-            <SelectTrigger className="w-full bg-gray-800 border-gray-700 text-white">
+            <SelectTrigger className="w-full bg-[#FFFFFF] dark:bg-[#1A1A1A] border-[#E5E7EB] dark:border-[#2D2D2D] text-[#111827] dark:text-[#F4F4F5]">
               <SelectValue placeholder="Select Category" />
             </SelectTrigger>
-            <SelectContent className="bg-gray-800 border-gray-700">
-              <SelectItem value="all" className="text-white">
+            <SelectContent className="bg-[#FFFFFF] dark:bg-[#1A1A1A] border-[#E5E7EB] dark:border-[#2D2D2D]">
+              <SelectItem value="all" className="text-[#111827] dark:text-[#F4F4F5]">
                 All Categories
               </SelectItem>
               {categories.map((category) => (
                 <SelectItem
                   key={category._id}
                   value={category._id}
-                  className="text-white"
+                  className="text-[#111827] dark:text-[#F4F4F5]"
                 >
                   {category.name}
                 </SelectItem>
@@ -211,25 +211,25 @@ const FilterRecipesSidebar: React.FC<FilterRecipesSidebarProps> = ({
 
       {/* Difficulty Filter */}
       <div className="w-full mt-6">
-        <h3 className="text-sm font-medium text-gray-300 mb-3">Difficulty</h3>
+        <h3 className="text-sm font-medium text-[#4B5563] dark:text-[#A1A1AA] mb-3">Difficulty</h3>
         <Select
           value={getSelectValue(filters.difficulty)}
           onValueChange={(value) => handleFilterChange("difficulty", value)}
         >
-          <SelectTrigger className="w-full bg-gray-800 border-gray-700 text-white">
+          <SelectTrigger className="w-full bg-[#FFFFFF] dark:bg-[#1A1A1A] border-[#E5E7EB] dark:border-[#2D2D2D] text-[#111827] dark:text-[#F4F4F5]">
             <SelectValue placeholder="Select Difficulty" />
           </SelectTrigger>
-          <SelectContent className="bg-gray-800 border-gray-700">
-            <SelectItem value="all" className="text-white">
+          <SelectContent className="bg-[#FFFFFF] dark:bg-[#1A1A1A] border-[#E5E7EB] dark:border-[#2D2D2D]">
+            <SelectItem value="all" className="text-[#111827] dark:text-[#F4F4F5]">
               All Difficulties
             </SelectItem>
-            <SelectItem value="easy" className="text-white">
+            <SelectItem value="easy" className="text-[#111827] dark:text-[#F4F4F5]">
               Easy
             </SelectItem>
-            <SelectItem value="medium" className="text-white">
+            <SelectItem value="medium" className="text-[#111827] dark:text-[#F4F4F5]">
               Medium
             </SelectItem>
-            <SelectItem value="hard" className="text-white">
+            <SelectItem value="hard" className="text-[#111827] dark:text-[#F4F4F5]">
               Hard
             </SelectItem>
           </SelectContent>
@@ -238,31 +238,31 @@ const FilterRecipesSidebar: React.FC<FilterRecipesSidebarProps> = ({
 
       {/* Cooking Time Filter */}
       <div className="w-full mt-6">
-        <h3 className="text-sm font-medium text-gray-300 mb-3">Cooking Time</h3>
+        <h3 className="text-sm font-medium text-[#4B5563] dark:text-[#A1A1AA] mb-3">Cooking Time</h3>
         <Select
           value={getSelectValue(filters.cookingTime)}
           onValueChange={(value) => handleFilterChange("cookingTime", value)}
         >
-          <SelectTrigger className="w-full bg-gray-800 border-gray-700 text-white">
+          <SelectTrigger className="w-full bg-[#FFFFFF] dark:bg-[#1A1A1A] border-[#E5E7EB] dark:border-[#2D2D2D] text-[#111827] dark:text-[#F4F4F5]">
             <SelectValue placeholder="Select Time" />
           </SelectTrigger>
-          <SelectContent className="bg-gray-800 border-gray-700">
-            <SelectItem value="all" className="text-white">
+          <SelectContent className="bg-[#FFFFFF] dark:bg-[#1A1A1A] border-[#E5E7EB] dark:border-[#2D2D2D]">
+            <SelectItem value="all" className="text-[#111827] dark:text-[#F4F4F5]">
               Any Time
             </SelectItem>
-            <SelectItem value="15" className="text-white">
+            <SelectItem value="15" className="text-[#111827] dark:text-[#F4F4F5]">
               Under 15 mins
             </SelectItem>
-            <SelectItem value="30" className="text-white">
+            <SelectItem value="30" className="text-[#111827] dark:text-[#F4F4F5]">
               Under 30 mins
             </SelectItem>
-            <SelectItem value="60" className="text-white">
+            <SelectItem value="60" className="text-[#111827] dark:text-[#F4F4F5]">
               Under 1 hour
             </SelectItem>
-            <SelectItem value="120" className="text-white">
+            <SelectItem value="120" className="text-[#111827] dark:text-[#F4F4F5]">
               Under 2 hours
             </SelectItem>
-            <SelectItem value="180" className="text-white">
+            <SelectItem value="180" className="text-[#111827] dark:text-[#F4F4F5]">
               3+ hours
             </SelectItem>
           </SelectContent>
@@ -271,31 +271,31 @@ const FilterRecipesSidebar: React.FC<FilterRecipesSidebarProps> = ({
 
       {/* Serves Filter */}
       <div className="w-full mt-6">
-        <h3 className="text-sm font-medium text-gray-300 mb-3">Serves</h3>
+        <h3 className="text-sm font-medium text-[#4B5563] dark:text-[#A1A1AA] mb-3">Serves</h3>
         <Select
           value={getSelectValue(filters.serves)}
           onValueChange={(value) => handleFilterChange("serves", value)}
         >
-          <SelectTrigger className="w-full bg-gray-800 border-gray-700 text-white">
+          <SelectTrigger className="w-full bg-[#FFFFFF] dark:bg-[#1A1A1A] border-[#E5E7EB] dark:border-[#2D2D2D] text-[#111827] dark:text-[#F4F4F5]">
             <SelectValue placeholder="Select Servings" />
           </SelectTrigger>
-          <SelectContent className="bg-gray-800 border-gray-700">
-            <SelectItem value="all" className="text-white">
+          <SelectContent className="bg-[#FFFFFF] dark:bg-[#1A1A1A] border-[#E5E7EB] dark:border-[#2D2D2D]">
+            <SelectItem value="all" className="text-[#111827] dark:text-[#F4F4F5]">
               Any Serving
             </SelectItem>
-            <SelectItem value="1" className="text-white">
+            <SelectItem value="1" className="text-[#111827] dark:text-[#F4F4F5]">
               1 person
             </SelectItem>
-            <SelectItem value="2" className="text-white">
+            <SelectItem value="2" className="text-[#111827] dark:text-[#F4F4F5]">
               2 people
             </SelectItem>
-            <SelectItem value="3" className="text-white">
+            <SelectItem value="3" className="text-[#111827] dark:text-[#F4F4F5]">
               3 people
             </SelectItem>
-            <SelectItem value="4" className="text-white">
+            <SelectItem value="4" className="text-[#111827] dark:text-[#F4F4F5]">
               4 people
             </SelectItem>
-            <SelectItem value="5" className="text-white">
+            <SelectItem value="5" className="text-[#111827] dark:text-[#F4F4F5]">
               5+ people
             </SelectItem>
           </SelectContent>
@@ -304,34 +304,34 @@ const FilterRecipesSidebar: React.FC<FilterRecipesSidebarProps> = ({
 
       {/* Sort Options */}
       <div className="w-full mt-6">
-        <h3 className="text-sm font-medium text-gray-300 mb-3">Sort By</h3>
+        <h3 className="text-sm font-medium text-[#4B5563] dark:text-[#A1A1AA] mb-3">Sort By</h3>
         <Select
           value={getSelectValue(filters.sortBy)}
           onValueChange={(value) => handleFilterChange("sortBy", value)}
         >
-          <SelectTrigger className="w-full bg-gray-800 border-gray-700 text-white">
+          <SelectTrigger className="w-full bg-[#FFFFFF] dark:bg-[#1A1A1A] border-[#E5E7EB] dark:border-[#2D2D2D] text-[#111827] dark:text-[#F4F4F5]">
             <SelectValue placeholder="Sort recipes" />
           </SelectTrigger>
-          <SelectContent className="bg-gray-800 border-gray-700">
-            <SelectItem value="all" className="text-white">
+          <SelectContent className="bg-[#FFFFFF] dark:bg-[#1A1A1A] border-[#E5E7EB] dark:border-[#2D2D2D]">
+            <SelectItem value="all" className="text-[#111827] dark:text-[#F4F4F5]">
               Default
             </SelectItem>
-            <SelectItem value="newest" className="text-white">
+            <SelectItem value="newest" className="text-[#111827] dark:text-[#F4F4F5]">
               Newest First
             </SelectItem>
-            <SelectItem value="oldest" className="text-white">
+            <SelectItem value="oldest" className="text-[#111827] dark:text-[#F4F4F5]">
               Oldest First
             </SelectItem>
-            <SelectItem value="most-liked" className="text-white">
+            <SelectItem value="most-liked" className="text-[#111827] dark:text-[#F4F4F5]">
               Most Liked
             </SelectItem>
-            <SelectItem value="most-viewed" className="text-white">
+            <SelectItem value="most-viewed" className="text-[#111827] dark:text-[#F4F4F5]">
               Most Viewed
             </SelectItem>
-            <SelectItem value="cooking-time-asc" className="text-white">
+            <SelectItem value="cooking-time-asc" className="text-[#111827] dark:text-[#F4F4F5]">
               Quick to Cook
             </SelectItem>
-            <SelectItem value="cooking-time-desc" className="text-white">
+            <SelectItem value="cooking-time-desc" className="text-[#111827] dark:text-[#F4F4F5]">
               Long to Cook
             </SelectItem>
           </SelectContent>

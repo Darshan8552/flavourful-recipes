@@ -132,12 +132,12 @@ const MobileFilterSheet: React.FC<MobileFilterSheetProps> = ({
       <SheetTrigger asChild>
         <Button
           variant="outline"
-          className="lg:hidden border-gray-700 text-white hover:bg-gray-800 relative"
+          className="lg:hidden border-gray-300 dark:border-zinc-700 text-gray-900 dark:text-zinc-100 hover:bg-gray-100 dark:hover:bg-zinc-800 relative bg-white dark:bg-zinc-900"
         >
           <SlidersHorizontal className="w-4 h-4 mr-2" />
           Filters
           {activeFiltersCount > 0 && (
-            <span className="absolute -top-2 -right-2 bg-blue-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+            <span className="absolute -top-2 -right-2 bg-green-600 dark:bg-green-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
               {activeFiltersCount}
             </span>
           )}
@@ -146,10 +146,10 @@ const MobileFilterSheet: React.FC<MobileFilterSheetProps> = ({
 
       <SheetContent
         side="left"
-        className="w-[320px] bg-black border-gray-800 overflow-y-auto px-2"
+        className="w-[320px] bg-white dark:bg-zinc-950 border-gray-200 dark:border-zinc-800 overflow-y-auto px-2"
       >
         <SheetHeader>
-          <SheetTitle className="text-white flex items-center gap-2">
+          <SheetTitle className="text-gray-900 dark:text-zinc-100 flex items-center gap-2">
             <Filter className="w-5 h-5" />
             Filter Recipes
             {hasActiveFilters && (
@@ -157,14 +157,14 @@ const MobileFilterSheet: React.FC<MobileFilterSheetProps> = ({
                 onClick={clearAllFilters}
                 variant="ghost"
                 size="sm"
-                className="text-red-400 hover:text-red-300 hover:bg-red-400/10 ml-auto"
+                className="text-red-600 dark:text-red-400 hover:text-red-700 dark:hover:text-red-300 hover:bg-red-50 dark:hover:bg-red-400/10 ml-auto"
               >
                 <X className="w-4 h-4 mr-1" />
                 Clear
               </Button>
             )}
           </SheetTitle>
-          <SheetDescription className="text-gray-400">
+          <SheetDescription className="text-gray-600 dark:text-zinc-400">
             Customize your recipe search with filters below
           </SheetDescription>
         </SheetHeader>
@@ -172,7 +172,7 @@ const MobileFilterSheet: React.FC<MobileFilterSheetProps> = ({
         <div className="py-2 space-y-6">
           {/* Recipe Type Filter */}
           <div>
-            <h3 className="text-sm font-medium text-gray-300 mb-3">
+            <h3 className="text-sm font-medium text-gray-700 dark:text-zinc-300 mb-3">
               Recipe Type
             </h3>
             <div className="space-y-3">
@@ -186,7 +186,7 @@ const MobileFilterSheet: React.FC<MobileFilterSheetProps> = ({
                 />
                 <label
                   htmlFor="mobile-veg"
-                  className="text-sm text-gray-200 cursor-pointer"
+                  className="text-sm text-gray-800 dark:text-zinc-200 cursor-pointer"
                 >
                   Vegetarian
                 </label>
@@ -201,7 +201,7 @@ const MobileFilterSheet: React.FC<MobileFilterSheetProps> = ({
                 />
                 <label
                   htmlFor="mobile-non-veg"
-                  className="text-sm text-gray-200 cursor-pointer"
+                  className="text-sm text-gray-800 dark:text-zinc-200 cursor-pointer"
                 >
                   Non-Vegetarian
                 </label>
@@ -212,25 +212,25 @@ const MobileFilterSheet: React.FC<MobileFilterSheetProps> = ({
           {/* Category Filter */}
           {categories.length > 0 && (
             <div>
-              <h3 className="text-sm font-medium text-gray-300 mb-3">
+              <h3 className="text-sm font-medium text-gray-700 dark:text-zinc-300 mb-3">
                 Category
               </h3>
               <Select
                 value={getSelectValue(filters.category)}
                 onValueChange={(value) => handleFilterChange("category", value)}
               >
-                <SelectTrigger className="w-full bg-gray-800 border-gray-700 text-white">
+                <SelectTrigger className="w-full bg-white dark:bg-zinc-800 border-gray-300 dark:border-zinc-700 text-gray-900 dark:text-zinc-100">
                   <SelectValue placeholder="Select Category" />
                 </SelectTrigger>
-                <SelectContent className="bg-gray-800 border-gray-700">
-                  <SelectItem value="all" className="text-white">
+                <SelectContent className="bg-white dark:bg-zinc-800 border-gray-300 dark:border-zinc-700">
+                  <SelectItem value="all" className="text-gray-900 dark:text-zinc-100">
                     All Categories
                   </SelectItem>
                   {categories.map((category) => (
                     <SelectItem
                       key={category._id}
                       value={category._id}
-                      className="text-white"
+                      className="text-gray-900 dark:text-zinc-100"
                     >
                       {category.name}
                     </SelectItem>
@@ -242,27 +242,27 @@ const MobileFilterSheet: React.FC<MobileFilterSheetProps> = ({
 
           {/* Difficulty Filter */}
           <div>
-            <h3 className="text-sm font-medium text-gray-300 mb-3">
+            <h3 className="text-sm font-medium text-gray-700 dark:text-zinc-300 mb-3">
               Difficulty Level
             </h3>
             <Select
               value={getSelectValue(filters.difficulty)}
               onValueChange={(value) => handleFilterChange("difficulty", value)}
             >
-              <SelectTrigger className="w-full bg-gray-800 border-gray-700 text-white">
+              <SelectTrigger className="w-full bg-white dark:bg-zinc-800 border-gray-300 dark:border-zinc-700 text-gray-900 dark:text-zinc-100">
                 <SelectValue placeholder="Select Difficulty" />
               </SelectTrigger>
-              <SelectContent className="bg-gray-800 border-gray-700">
-                <SelectItem value="all" className="text-white">
+              <SelectContent className="bg-white dark:bg-zinc-800 border-gray-300 dark:border-zinc-700">
+                <SelectItem value="all" className="text-gray-900 dark:text-zinc-100">
                   All Difficulties
                 </SelectItem>
-                <SelectItem value="easy" className="text-white">
+                <SelectItem value="easy" className="text-gray-900 dark:text-zinc-100">
                   Easy
                 </SelectItem>
-                <SelectItem value="medium" className="text-white">
+                <SelectItem value="medium" className="text-gray-900 dark:text-zinc-100">
                   Medium
                 </SelectItem>
-                <SelectItem value="hard" className="text-white">
+                <SelectItem value="hard" className="text-gray-900 dark:text-zinc-100">
                   Hard
                 </SelectItem>
               </SelectContent>
@@ -271,7 +271,7 @@ const MobileFilterSheet: React.FC<MobileFilterSheetProps> = ({
 
           {/* Cooking Time Filter */}
           <div>
-            <h3 className="text-sm font-medium text-gray-300 mb-3">
+            <h3 className="text-sm font-medium text-gray-700 dark:text-zinc-300 mb-3">
               Cooking Time
             </h3>
             <Select
@@ -280,26 +280,26 @@ const MobileFilterSheet: React.FC<MobileFilterSheetProps> = ({
                 handleFilterChange("cookingTime", value)
               }
             >
-              <SelectTrigger className="w-full bg-gray-800 border-gray-700 text-white">
+              <SelectTrigger className="w-full bg-white dark:bg-zinc-800 border-gray-300 dark:border-zinc-700 text-gray-900 dark:text-zinc-100">
                 <SelectValue placeholder="Select Time" />
               </SelectTrigger>
-              <SelectContent className="bg-gray-800 border-gray-700">
-                <SelectItem value="all" className="text-white">
+              <SelectContent className="bg-white dark:bg-zinc-800 border-gray-300 dark:border-zinc-700">
+                <SelectItem value="all" className="text-gray-900 dark:text-zinc-100">
                   Any Time
                 </SelectItem>
-                <SelectItem value="15" className="text-white">
+                <SelectItem value="15" className="text-gray-900 dark:text-zinc-100">
                   Under 15 mins
                 </SelectItem>
-                <SelectItem value="30" className="text-white">
+                <SelectItem value="30" className="text-gray-900 dark:text-zinc-100">
                   Under 30 mins
                 </SelectItem>
-                <SelectItem value="60" className="text-white">
+                <SelectItem value="60" className="text-gray-900 dark:text-zinc-100">
                   Under 1 hour
                 </SelectItem>
-                <SelectItem value="120" className="text-white">
+                <SelectItem value="120" className="text-gray-900 dark:text-zinc-100">
                   Under 2 hours
                 </SelectItem>
-                <SelectItem value="180" className="text-white">
+                <SelectItem value="180" className="text-gray-900 dark:text-zinc-100">
                   3+ hours
                 </SelectItem>
               </SelectContent>
@@ -308,31 +308,31 @@ const MobileFilterSheet: React.FC<MobileFilterSheetProps> = ({
 
           {/* Serves Filter */}
           <div>
-            <h3 className="text-sm font-medium text-gray-300 mb-3">Servings</h3>
+            <h3 className="text-sm font-medium text-gray-700 dark:text-zinc-300 mb-3">Servings</h3>
             <Select
               value={getSelectValue(filters.serves)}
               onValueChange={(value) => handleFilterChange("serves", value)}
             >
-              <SelectTrigger className="w-full bg-gray-800 border-gray-700 text-white">
+              <SelectTrigger className="w-full bg-white dark:bg-zinc-800 border-gray-300 dark:border-zinc-700 text-gray-900 dark:text-zinc-100">
                 <SelectValue placeholder="Select Servings" />
               </SelectTrigger>
-              <SelectContent className="bg-gray-800 border-gray-700">
-                <SelectItem value="all" className="text-white">
+              <SelectContent className="bg-white dark:bg-zinc-800 border-gray-300 dark:border-zinc-700">
+                <SelectItem value="all" className="text-gray-900 dark:text-zinc-100">
                   Any Serving
                 </SelectItem>
-                <SelectItem value="1" className="text-white">
+                <SelectItem value="1" className="text-gray-900 dark:text-zinc-100">
                   1 person
                 </SelectItem>
-                <SelectItem value="2" className="text-white">
+                <SelectItem value="2" className="text-gray-900 dark:text-zinc-100">
                   2 people
                 </SelectItem>
-                <SelectItem value="3" className="text-white">
+                <SelectItem value="3" className="text-gray-900 dark:text-zinc-100">
                   3 people
                 </SelectItem>
-                <SelectItem value="4" className="text-white">
+                <SelectItem value="4" className="text-gray-900 dark:text-zinc-100">
                   4 people
                 </SelectItem>
-                <SelectItem value="5" className="text-white">
+                <SelectItem value="5" className="text-gray-900 dark:text-zinc-100">
                   5+ people
                 </SelectItem>
               </SelectContent>
@@ -341,34 +341,34 @@ const MobileFilterSheet: React.FC<MobileFilterSheetProps> = ({
 
           {/* Sort Options */}
           <div>
-            <h3 className="text-sm font-medium text-gray-300 mb-3">Sort By</h3>
+            <h3 className="text-sm font-medium text-gray-700 dark:text-zinc-300 mb-3">Sort By</h3>
             <Select
               value={getSelectValue(filters.sortBy)}
               onValueChange={(value) => handleFilterChange("sortBy", value)}
             >
-              <SelectTrigger className="w-full bg-gray-800 border-gray-700 text-white">
+              <SelectTrigger className="w-full bg-white dark:bg-zinc-800 border-gray-300 dark:border-zinc-700 text-gray-900 dark:text-zinc-100">
                 <SelectValue placeholder="Sort recipes" />
               </SelectTrigger>
-              <SelectContent className="bg-gray-800 border-gray-700">
-                <SelectItem value="all" className="text-white">
+              <SelectContent className="bg-white dark:bg-zinc-800 border-gray-300 dark:border-zinc-700">
+                <SelectItem value="all" className="text-gray-900 dark:text-zinc-100">
                   Default
                 </SelectItem>
-                <SelectItem value="newest" className="text-white">
+                <SelectItem value="newest" className="text-gray-900 dark:text-zinc-100">
                   Newest First
                 </SelectItem>
-                <SelectItem value="oldest" className="text-white">
+                <SelectItem value="oldest" className="text-gray-900 dark:text-zinc-100">
                   Oldest First
                 </SelectItem>
-                <SelectItem value="most-liked" className="text-white">
+                <SelectItem value="most-liked" className="text-gray-900 dark:text-zinc-100">
                   Most Liked
                 </SelectItem>
-                <SelectItem value="most-viewed" className="text-white">
+                <SelectItem value="most-viewed" className="text-gray-900 dark:text-zinc-100">
                   Most Viewed
                 </SelectItem>
-                <SelectItem value="cooking-time-asc" className="text-white">
+                <SelectItem value="cooking-time-asc" className="text-gray-900 dark:text-zinc-100">
                   Quick to Cook
                 </SelectItem>
-                <SelectItem value="cooking-time-desc" className="text-white">
+                <SelectItem value="cooking-time-desc" className="text-gray-900 dark:text-zinc-100">
                   Long to Cook
                 </SelectItem>
               </SelectContent>

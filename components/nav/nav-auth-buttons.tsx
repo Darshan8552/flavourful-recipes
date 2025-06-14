@@ -12,8 +12,23 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { useAuth } from "@/lib/providers/auth-provider";
 import { Button } from "@/components/ui/button";
-import { LogOut, Menu, Plus, Search, Settings, User } from "lucide-react";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import {
+  Bookmark,
+  Heart,
+  LogOut,
+  Menu,
+  Plus,
+  Search,
+  Settings,
+  User,
+} from "lucide-react";
+import {
+  Sheet,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
 import { Input } from "@/components/ui/input";
 import { useRouter } from "next/navigation";
 import { navLinks } from "@/lib/constants/nav-constant";
@@ -107,37 +122,41 @@ const NavbarAuth = ({ image }: { image?: string }) => {
                   <span>Profile</span>
                 </Link>
               </DropdownMenuItem>
-              <DropdownMenuItem asChild>
-                {session.user.role === "admin" ? (
-                  <>
-                    <Link
-                      href="/dashboard"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      className="flex items-center px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
-                    >
-                      <Settings className="mr-2 h-4 w-4" />
-                      Dashboard
-                    </Link>
-                    <Link
-                      href="/user-upload-recipe"
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      className="flex items-center px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
-                    >
-                      <Plus className="mr-2 h-4 w-4" />
-                      Upload Recipe
-                    </Link>
-                  </>
-                ) : (
-                  <Link
-                    href="/user-upload-recipe"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="flex items-center px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
-                  >
-                    <Plus className="mr-2 h-4 w-4" />
-                    Upload Recipe
+
+              {/* Admin-only dashboard link */}
+              {session.user.role === "admin" && (
+                <DropdownMenuItem asChild>
+                  <Link href="/dashboard" className="flex items-center">
+                    <Settings className="mr-2 h-4 w-4" />
+                    <span>Dashboard</span>
                   </Link>
-                )}
+                </DropdownMenuItem>
+              )}
+
+              {/* Upload Recipe - available to all users */}
+              <DropdownMenuItem asChild>
+                <Link href="/user-upload-recipe" className="flex items-center">
+                  <Plus className="mr-2 h-4 w-4" />
+                  <span>Upload Recipe</span>
+                </Link>
               </DropdownMenuItem>
+
+              {/* Saved Recipes - available to all users */}
+              <DropdownMenuItem asChild>
+                <Link href="/saved-recipes" className="flex items-center">
+                  <Bookmark className="mr-2 h-4 w-4" />
+                  <span>Saved Recipes</span>
+                </Link>
+              </DropdownMenuItem>
+
+              {/* Favourite Recipes - available to all users */}
+              <DropdownMenuItem asChild>
+                <Link href="/favorite-recipes" className="flex items-center">
+                  <Heart className="mr-2 h-4 w-4" />
+                  <span>Favourite Recipes</span>
+                </Link>
+              </DropdownMenuItem>
+
               <DropdownMenuSeparator />
               <DropdownMenuItem
                 onClick={handleSignOut}
@@ -167,8 +186,11 @@ const NavbarAuth = ({ image }: { image?: string }) => {
             </Button>
           </SheetTrigger>
           <SheetContent side="right" className="w-[300px] sm:w-[400px]">
+            <SheetHeader>
+              <SheetTitle>Navigation Menu</SheetTitle>
+            </SheetHeader>
             <div className="flex flex-col space-y-4">
-              <div className="flex items-center space-x-2 p-4">
+              <div className="flex items-center space-x-2 px-2">
                 <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
                   <span className="text-sm font-bold">FR</span>
                 </div>
@@ -188,7 +210,6 @@ const NavbarAuth = ({ image }: { image?: string }) => {
                 />
               </form>
 
-              {/* Mobile Navigation Links */}
               <div className="flex flex-col space-y-2">
                 {navLinks.map((link) => (
                   <Link
@@ -233,35 +254,40 @@ const NavbarAuth = ({ image }: { image?: string }) => {
                         <User className="mr-2 h-4 w-4" />
                         Profile
                       </Link>
-                      {session.user.role === "admin" ? (
-                        <>
-                          <Link
-                            href="/dashboard"
-                            onClick={() => setIsMobileMenuOpen(false)}
-                            className="flex items-center px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
-                          >
-                            <Settings className="mr-2 h-4 w-4" />
-                            Dashboard
-                          </Link>
-                          <Link
-                            href="/user-upload-recipe"
-                            onClick={() => setIsMobileMenuOpen(false)}
-                            className="flex items-center px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
-                          >
-                            <Plus className="mr-2 h-4 w-4" />
-                            Upload Recipe
-                          </Link>
-                        </>
-                      ) : (
+                      {session.user.role === "admin" && (
                         <Link
-                          href="/user-upload-recipe"
+                          href="/dashboard"
                           onClick={() => setIsMobileMenuOpen(false)}
                           className="flex items-center px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
                         >
-                          <Plus className="mr-2 h-4 w-4" />
-                          Upload Recipe
+                          <Settings className="mr-2 h-4 w-4" />
+                          Dashboard
                         </Link>
                       )}
+                      <Link
+                        href="/user-upload-recipe"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        className="flex items-center px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+                      >
+                        <Plus className="mr-2 h-4 w-4" />
+                        Upload Recipe
+                      </Link>
+                      <Link
+                        href="/saved-recipes"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        className="flex items-center px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+                      >
+                        <Bookmark className="mr-2 h-4 w-4" />
+                        Saved Recipes
+                      </Link>
+                      <Link
+                        href="/favorite-recipes"
+                        onClick={() => setIsMobileMenuOpen(false)}
+                        className="flex items-center px-3 py-2 text-sm font-medium text-muted-foreground transition-colors hover:text-primary"
+                      >
+                        <Heart className="mr-2 h-4 w-4" />
+                        Favourite Recipes
+                      </Link>
                       <Button
                         variant="ghost"
                         onClick={() => {
@@ -279,7 +305,7 @@ const NavbarAuth = ({ image }: { image?: string }) => {
                   <div className="flex flex-col space-y-2">
                     <Button variant="ghost" asChild className="justify-start">
                       <Link
-                        href="/auth/signin"
+                        href="/signin"
                         onClick={() => setIsMobileMenuOpen(false)}
                       >
                         Sign In
@@ -287,7 +313,7 @@ const NavbarAuth = ({ image }: { image?: string }) => {
                     </Button>
                     <Button asChild className="justify-start">
                       <Link
-                        href="/auth/signup"
+                        href="/signup"
                         onClick={() => setIsMobileMenuOpen(false)}
                       >
                         Sign Up

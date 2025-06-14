@@ -17,6 +17,7 @@ import type {
   SessionResponse,
 } from "@/lib/types/auth-types";
 import { generateOTP } from "@/lib/generate-otp";
+import { revalidatePath } from "next/cache";
 
 const JWT_SECRET = new TextEncoder().encode(process.env.JWT_SECRET);
 
@@ -150,6 +151,10 @@ export async function signInWithCredentials(
       );
 
       await sendVerificationEmail(email, otp);
+
+      revalidatePath("/", "layout");
+      revalidatePath("/dashboard");
+      revalidatePath("/profile");
 
       return {
         success: false,

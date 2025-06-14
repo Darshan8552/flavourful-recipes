@@ -549,14 +549,12 @@ const UploadRecipes = () => {
 
             {/* Selected Categories Display */}
             {selectedCategories.length > 0 && (
-              //check if there is a selected category
               <div className="space-y-3">
                 <Label className="text-sm font-semibold text-gray-300 uppercase tracking-wide">
                   Selected Categories
                 </Label>
                 <div className="flex flex-wrap gap-2">
                   {
-                    //display selected category
                     (() => {
                       const category = recipeCategories.find(
                         (cat) => cat.id === selectedCategories

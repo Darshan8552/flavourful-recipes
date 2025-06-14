@@ -43,7 +43,7 @@ const Recipes = async (props: RecipesPageProps) => {
   ]);
 
   return (
-    <main className="flex-col md:flex min-h-screen w-full bg-[#1a1a1a] sm:flex-row">
+    <main className="flex-col md:flex min-h-screen w-full bg-gray-50 dark:bg-zinc-950 sm:flex-row">
       <div className="hidden md:flex min-h-full w-full flex-[20%] max-w-[300px]">
         <FilterRecipesSidebar categories={categories} />
       </div>
@@ -57,8 +57,8 @@ const Recipes = async (props: RecipesPageProps) => {
           key={JSON.stringify(filters)}
           fallback={
             <div className="flex items-center justify-center w-full h-full">
-              <Loader className="animate-spin text-white" size={32} />
-              <span className="ml-2 text-white">Loading recipes...</span>
+              <Loader className="animate-spin text-gray-900 dark:text-zinc-100" size={32} />
+              <span className="ml-2 text-gray-900 dark:text-zinc-100">Loading recipes...</span>
             </div>
           }
         >

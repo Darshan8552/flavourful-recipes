@@ -183,7 +183,7 @@ export async function searchRecipeSuggestions(query: string, limit: number = 5) 
       .lean();
 
     return suggestions.map((recipe) => ({
-      id: recipe._id,
+      id: recipe._id.toString(),
       title: recipe.title,
       description: recipe.description,
     }));

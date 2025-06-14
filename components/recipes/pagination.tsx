@@ -74,7 +74,7 @@ const Pagination = ({
         size="sm"
         disabled={!hasPrevPage}
         onClick={() => goToPage(currentPage - 1)}
-        className="border-gray-700 text-white hover:bg-gray-800 disabled:opacity-50"
+        className="border-[#E5E7EB] dark:border-[#2D2D2D] text-[#111827] dark:text-[#F4F4F5] hover:bg-[#F9FAFB] dark:hover:bg-[#1A1A1A] disabled:opacity-50 disabled:cursor-not-allowed"
       >
         <ChevronLeft className="w-4 h-4" />
         Previous
@@ -85,7 +85,7 @@ const Pagination = ({
         {getPageNumbers().map((page, index) => (
           <React.Fragment key={index}>
             {page === "..." ? (
-              <span className="px-3 py-2 text-gray-400">...</span>
+              <span className="px-3 py-2 text-[#4B5563] dark:text-[#A1A1AA]">...</span>
             ) : (
               <Button
                 variant={currentPage === page ? "default" : "outline"}
@@ -93,8 +93,8 @@ const Pagination = ({
                 onClick={() => goToPage(page as number)}
                 className={
                   currentPage === page
-                    ? "bg-blue-600 text-white hover:bg-blue-700"
-                    : "border-gray-700 text-white hover:bg-black"
+                    ? "bg-[#16A34A] dark:bg-[#22C55E] text-white hover:bg-[#15803D] dark:hover:bg-[#16A34A] border-0"
+                    : "border-[#E5E7EB] dark:border-[#2D2D2D] text-[#111827] dark:text-[#F4F4F5] hover:bg-[#F9FAFB] dark:hover:bg-[#1A1A1A] bg-[#FFFFFF] dark:bg-[#0F0F0F]"
                 }
               >
                 {page}
@@ -110,7 +110,7 @@ const Pagination = ({
         size="sm"
         disabled={!hasNextPage}
         onClick={() => goToPage(currentPage + 1)}
-        className="border-gray-700 text-white hover:bg-black disabled:opacity-50"
+        className="border-[#E5E7EB] dark:border-[#2D2D2D] text-[#111827] dark:text-[#F4F4F5] hover:bg-[#F9FAFB] dark:hover:bg-[#1A1A1A] disabled:opacity-50 disabled:cursor-not-allowed"
       >
         Next
         <ChevronRight className="w-4 h-4" />

@@ -245,13 +245,13 @@ const UploadRecipes = () => {
       <div className="flex w-full gap-3">
         <PreviewRecipe recipe={recipes} />
         <Card className="w-full max-w-3xl">
-          <CardContent className="p-8 space-y-10">
+          <CardContent className=" space-y-2">
             {/* Info Section */}
             <div className="grid md:grid-cols-2 gap-8">
               <div className="space-y-3">
                 <Label
                   htmlFor="title"
-                  className="text-xl font-bold text-woodsmoke-100"
+                  className="text-xl font-bold text-gray-900 dark:text-zinc-100"
                 >
                   Recipe Title
                 </Label>
@@ -259,7 +259,7 @@ const UploadRecipes = () => {
                   <Input
                     id="title"
                     placeholder="Enter your amazing recipe title"
-                    className="text-lg bg-woodsmoke-800 border-woodsmoke-600 text-woodsmoke-100 placeholder:text-woodsmoke-400 focus:border-woodsmoke-400 focus:ring-woodsmoke-400/20 h-12"
+                    className="text-lg bg-white dark:bg-neutral-800 border-gray-300 dark:border-neutral-700 text-gray-900 dark:text-zinc-100 placeholder:text-gray-600 dark:placeholder:text-zinc-400 focus:border-sky-500 dark:focus:border-sky-400 focus:ring-sky-500/20 dark:focus:ring-sky-400/20 h-12"
                     value={title}
                     onChange={(e) => setTitle(e.target.value)}
                     disabled={isPending}
@@ -268,7 +268,7 @@ const UploadRecipes = () => {
                     <TooltipTrigger asChild>
                       <Button
                         variant="outline"
-                        className="min-h-12"
+                        className="min-h-12 border-gray-300 dark:border-neutral-700 text-gray-900 dark:text-zinc-100 hover:bg-gray-50 dark:hover:bg-neutral-800"
                         onClick={generateImage}
                         disabled={!title}
                       >
@@ -288,7 +288,7 @@ const UploadRecipes = () => {
               <div className="space-y-3">
                 <Label
                   htmlFor="author"
-                  className="text-xl font-bold text-woodsmoke-100"
+                  className="text-xl font-bold text-gray-900 dark:text-zinc-100"
                 >
                   Author Name
                 </Label>
@@ -296,7 +296,7 @@ const UploadRecipes = () => {
                   id="author"
                   name="author"
                   placeholder="Your name"
-                  className="text-lg bg-woodsmoke-800 border-woodsmoke-600 text-woodsmoke-100 placeholder:text-woodsmoke-400 focus:border-woodsmoke-400 focus:ring-woodsmoke-400/20 h-12"
+                  className="text-lg bg-white dark:bg-neutral-800 border-gray-300 dark:border-neutral-700 text-gray-900 dark:text-zinc-100 placeholder:text-gray-600 dark:placeholder:text-zinc-400 focus:border-sky-500 dark:focus:border-sky-400 focus:ring-sky-500/20 dark:focus:ring-sky-400/20 h-12"
                   value={author}
                   onChange={(e) => setAuthor(e.target.value)}
                 />
@@ -305,10 +305,10 @@ const UploadRecipes = () => {
 
             {/* Image Section */}
             <div className="space-y-4">
-              <Label className="text-xl font-bold text-woodsmoke-100">
+              <Label className="text-xl font-bold text-gray-900 dark:text-zinc-100">
                 Recipe Image
               </Label>
-              <div className="border-2 border-dashed border-woodsmoke-600 rounded-xl p-8 text-center hover:border-woodsmoke-300 transition-all duration-300">
+              <div className="border-2 border-dashed border-gray-300 dark:border-neutral-700 rounded-xl p-8 text-center hover:border-green-600 dark:hover:border-green-500 transition-all duration-300">
                 {imagePreview ? (
                   <div className="relative h-[350px] w-[500px] mx-auto">
                     <Image
@@ -323,7 +323,7 @@ const UploadRecipes = () => {
                     <Button
                       variant="destructive"
                       size="sm"
-                      className="absolute top-3 right-3 rounded-full shadow-lg"
+                      className="absolute top-3 right-3 rounded-full shadow-lg bg-red-600 hover:bg-red-700 dark:bg-red-500 dark:hover:bg-red-600"
                       onClick={() => setImagePreview(null)}
                     >
                       <X className="h-4 w-4" />
@@ -331,13 +331,13 @@ const UploadRecipes = () => {
                   </div>
                 ) : (
                   <div className="space-y-6">
-                    <Upload className="mx-auto h-16 w-16 text-woodsmoke-400" />
+                    <Upload className="mx-auto h-16 w-16 text-gray-600 dark:text-zinc-400" />
                     <div className="mx-auto flex items-center justify-center">
                       <Label htmlFor="image-upload" className="cursor-pointer">
-                        <span className="text-woodsmoke-400 hover:text-woodsmoke-300 text-lg font-semibold">
+                        <span className="text-gray-600 dark:text-zinc-400 hover:text-green-600 dark:hover:text-green-500 text-lg font-semibold">
                           Click to upload
                         </span>
-                        <span className="text-woodsmoke-400 text-lg">
+                        <span className="text-gray-600 dark:text-zinc-400 text-lg ml-1">
                           or drag and drop
                         </span>
                       </Label>
@@ -350,7 +350,7 @@ const UploadRecipes = () => {
                         disabled={isPending}
                       />
                     </div>
-                    <p className="text-woodsmoke-500">
+                    <p className="text-gray-500 dark:text-zinc-500">
                       PNG, JPG, GIF up to 10MB
                     </p>
                   </div>
@@ -360,25 +360,27 @@ const UploadRecipes = () => {
 
             {/* Recipe Type */}
             <div className="space-y-3">
-              <Label className="text-xl font-bold text-woodsmoke-100">
+              <Label className="text-xl font-bold text-gray-900 dark:text-zinc-100">
                 Recipe Type
               </Label>
               <Select value={type} onValueChange={(value) => setType(value)}>
-                <SelectTrigger className="w-full md:w-64 bg-woodsmoke-800 border-woodsmoke-600 text-woodsmoke-100 focus:border-woodsmoke-400 h-12">
+                <SelectTrigger className="w-full md:w-64 bg-white dark:bg-neutral-800 border-gray-300 dark:border-neutral-700 text-gray-900 dark:text-zinc-100 focus:border-sky-500 dark:focus:border-sky-400 h-12">
                   <SelectValue placeholder="Select type" />
                 </SelectTrigger>
-                <SelectContent className="bg-woodsmoke-800 border-woodsmoke-600">
+                <SelectContent className="bg-white dark:bg-neutral-800 border-gray-300 dark:border-neutral-700">
                   <SelectItem
                     value="veg"
-                    className="text-woodsmoke-100 focus:bg-woodsmoke-700"
+                    className="text-gray-900 dark:text-zinc-100 focus:bg-gray-50 dark:focus:bg-neutral-700"
                   >
-                    <Vegan className="stroke-green-600" /> Vegetarian
+                    <Vegan className="stroke-green-600 dark:stroke-green-500" />{" "}
+                    Vegetarian
                   </SelectItem>
                   <SelectItem
                     value="non-veg"
-                    className="text-woodsmoke-100 focus:bg-woodsmoke-700"
+                    className="text-gray-900 dark:text-zinc-100 focus:bg-gray-50 dark:focus:bg-neutral-700"
                   >
-                    <Ham className="stroke-red-600" /> Non-Vegetarian
+                    <Ham className="stroke-red-600 dark:stroke-red-500" />{" "}
+                    Non-Vegetarian
                   </SelectItem>
                 </SelectContent>
               </Select>
@@ -388,19 +390,19 @@ const UploadRecipes = () => {
             <div className="space-y-3">
               <Label
                 htmlFor="description"
-                className="text-xl font-bold text-gray-100"
+                className="text-xl font-bold text-gray-900 dark:text-zinc-100"
               >
                 Short Description
               </Label>
               <Textarea
                 id="description"
                 placeholder="Describe your recipe in a few sentences..."
-                className="bg-woodsmoke-800 border-woodsmoke-600 text-woodsmoke-100 placeholder:text-woodsmoke-400 focus:border-woodsmoke-400 min-h-24 resize-none"
+                className="bg-white dark:bg-neutral-800 border-gray-300 dark:border-neutral-700 text-gray-900 dark:text-zinc-100 placeholder:text-gray-600 dark:placeholder:text-zinc-400 focus:border-sky-500 dark:focus:border-sky-400 min-h-24 resize-none"
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 disabled={isPending}
               />
-              <p className="text-sm text-gray-400">
+              <p className="text-sm text-gray-500 dark:text-zinc-500">
                 A short introduction to your recipe. What makes it special? When
                 do you serve it?
               </p>
@@ -409,14 +411,14 @@ const UploadRecipes = () => {
             {/* Ingredients Section */}
             <div className="space-y-6">
               <div className="flex items-center justify-between">
-                <Label className="text-xl font-bold text-woodsmoke-100">
+                <Label className="text-xl font-bold text-gray-900 dark:text-zinc-100">
                   Ingredients
                 </Label>
                 <Button
                   type="button"
                   variant="outline"
                   size="sm"
-                  className="border-woodsmoke-400 text-woodsmoke-400 hover:bg-woodsmoke-400/10 font-semibold"
+                  className="border-green-600 dark:border-green-500 text-green-600 dark:text-green-500 hover:bg-green-50 dark:hover:bg-green-500/10 font-semibold"
                   onClick={addIngredients}
                   disabled={isPending}
                 >
@@ -432,6 +434,7 @@ const UploadRecipes = () => {
                       value={ingredient}
                       onChange={(e) => updateIngredients(index, e.target.value)}
                       disabled={isPending}
+                      className="bg-white dark:bg-neutral-800 border-gray-300 dark:border-neutral-700 text-gray-900 dark:text-zinc-100 placeholder:text-gray-600 dark:placeholder:text-zinc-400 focus:border-sky-500 dark:focus:border-sky-400"
                     />
                     {ingredients.length > 1 && (
                       <Button
@@ -439,7 +442,7 @@ const UploadRecipes = () => {
                         variant="outline"
                         size="icon"
                         onClick={() => removeIngredients(index)}
-                        className="border-woodsmoke-400 text-woodsmoke-400 hover:bg-woodsmoke-400/10 px-3"
+                        className="border-red-600 dark:border-red-500 text-red-600 dark:text-red-500 hover:bg-red-50 dark:hover:bg-red-500/10 px-3"
                       >
                         <X className="h-4 w-4" />
                       </Button>
@@ -452,7 +455,7 @@ const UploadRecipes = () => {
             {/* Instructions Section */}
             <div className="space-y-6">
               <div className="flex items-center justify-between">
-                <Label className="text-xl font-bold text-woodsmoke-100">
+                <Label className="text-xl font-bold text-gray-900 dark:text-zinc-100">
                   Instructions
                 </Label>
                 <Button
@@ -460,7 +463,7 @@ const UploadRecipes = () => {
                   variant="outline"
                   size="sm"
                   onClick={addInstructions}
-                  className="border-woodsmoke-400 text-woodsmoke-400 hover:bg-woodsmoke-400/10 font-semibold"
+                  className="border-green-600 dark:border-green-500 text-green-600 dark:text-green-500 hover:bg-green-50 dark:hover:bg-green-500/10 font-semibold"
                 >
                   <Plus className="h-4 w-4 mr-2" />
                   Add Step
@@ -470,12 +473,12 @@ const UploadRecipes = () => {
                 {instructions.map((instruction, index) => (
                   <Card
                     key={index}
-                    className="bg-woodsmoke-800/50 border-woodsmoke-600"
+                    className="bg-white dark:bg-neutral-800/50 border-gray-300 dark:border-neutral-700"
                   >
-                    <CardContent className="p-6">
+                    <CardContent>
                       <div className="space-y-4">
                         <div className="flex items-center justify-between">
-                          <span className="bg-gradient-to-r from-woodsmoke-400 to-woodsmoke-400 text-black text-sm font-bold px-4 py-2 rounded-full">
+                          <span className="bg-green-600 dark:bg-green-500 text-white dark:text-black text-sm font-bold px-4 py-2 rounded-full">
                             Step {index + 1}
                           </span>
                           {instructions.length > 1 && (
@@ -484,7 +487,7 @@ const UploadRecipes = () => {
                               variant="outline"
                               size="sm"
                               onClick={() => removeInstructions(index)}
-                              className="border-woodsmoke-400 text-woodsmoke-400 hover:bg-woodsmoke-400/10"
+                              className="border-red-600 dark:border-red-500 text-red-600 dark:text-red-500 hover:bg-red-50 dark:hover:bg-red-500/10"
                             >
                               <X className="h-4 w-4" />
                             </Button>
@@ -500,7 +503,7 @@ const UploadRecipes = () => {
                               e.target.value
                             )
                           }
-                          className="bg-woodsmoke-800 border-woodsmoke-600 text-woodsmoke-100 placeholder:text-woodsmoke-400 focus:border-woodsmoke-400 h-12"
+                          className="bg-white dark:bg-neutral-800 border-gray-300 dark:border-neutral-700 text-gray-900 dark:text-zinc-100 placeholder:text-gray-600 dark:placeholder:text-zinc-400 focus:border-sky-500 dark:focus:border-sky-400 h-12"
                         />
                         <Textarea
                           placeholder="Detailed cooking steps..."
@@ -508,7 +511,7 @@ const UploadRecipes = () => {
                           onChange={(e) =>
                             updateInstructions(index, "steps", e.target.value)
                           }
-                          className="bg-woodsmoke-800 border-woodsmoke-600 text-woodsmoke-100 placeholder:text-woodsmoke-400 focus:border-woodsmoke-400 min-h-24 resize-none"
+                          className="bg-white dark:bg-neutral-800 border-gray-300 dark:border-neutral-700 text-gray-900 dark:text-zinc-100 placeholder:text-gray-600 dark:placeholder:text-zinc-400 focus:border-sky-500 dark:focus:border-sky-400 min-h-24 resize-none"
                         />
                       </div>
                     </CardContent>
@@ -519,10 +522,10 @@ const UploadRecipes = () => {
 
             {/* Categories Section */}
             <div className="space-y-6">
-              <Label className="text-xl font-bold text-gray-100">
+              <Label className="text-xl font-bold text-gray-900 dark:text-zinc-100">
                 Categories
               </Label>
-              <p className="text-gray-400">
+              <p className="text-gray-500 dark:text-zinc-500">
                 Select categories that apply to your recipe
               </p>
 
@@ -534,16 +537,16 @@ const UploadRecipes = () => {
                       setSelectedCategories(value);
                     }}
                   >
-                    <SelectTrigger className="bg-gray-800 border-gray-600 text-gray-100 focus:border-orange-400 h-12">
+                    <SelectTrigger className="bg-white dark:bg-neutral-800 border-gray-300 dark:border-neutral-700 text-gray-900 dark:text-zinc-100 focus:border-orange-500 dark:focus:border-orange-400 h-12">
                       <SelectValue placeholder="Select a category" />
                     </SelectTrigger>
-                    <SelectContent className="bg-gray-800 border-gray-600 max-h-60">
+                    <SelectContent className="bg-white dark:bg-neutral-800 border-gray-300 dark:border-neutral-700 max-h-60">
                       {recipeCategories.map((category) => (
                         <SelectItem
                           key={category.id}
                           value={category.id}
-                          className="text-gray-100 focus:bg-gray-700"
-                          disabled={selectedCategories === category.id} //compare directly
+                          className="text-gray-900 dark:text-zinc-100 focus:bg-gray-50 dark:focus:bg-neutral-700"
+                          disabled={selectedCategories === category.id}
                         >
                           <span className="flex items-center gap-2">
                             <span>{category.emoji}</span>
@@ -562,7 +565,7 @@ const UploadRecipes = () => {
                     disabled={isPending}
                     value={customCategory}
                     onChange={(e) => setCustomCategory(e.target.value)}
-                    className="bg-gray-800 border-gray-600 text-gray-100 placeholder:text-gray-400 focus:border-orange-400 h-12 w-48"
+                    className="bg-white dark:bg-neutral-800 border-gray-300 dark:border-neutral-700 text-gray-900 dark:text-zinc-100 placeholder:text-gray-600 dark:placeholder:text-zinc-400 focus:border-orange-500 dark:focus:border-orange-400 h-12 w-48"
                   />
                   <Button
                     type="button"
@@ -570,7 +573,7 @@ const UploadRecipes = () => {
                     size="sm"
                     onClick={addCustomCategory}
                     disabled={!customCategory}
-                    className="border-orange-400 text-orange-400 hover:bg-orange-400/10 font-semibold h-12 px-4"
+                    className="border-orange-500 dark:border-orange-400 text-orange-500 dark:text-orange-400 hover:bg-orange-50 dark:hover:bg-orange-400/10 font-semibold h-12 px-4"
                   >
                     <Plus className="h-4 w-4" />
                   </Button>
@@ -579,9 +582,8 @@ const UploadRecipes = () => {
 
               {/* Selected Categories Display */}
               {selectedCategories.length > 0 && (
-                //check if there is a selected category
                 <div className="space-y-3">
-                  <Label className="text-sm font-semibold text-gray-300 uppercase tracking-wide">
+                  <Label className="text-sm font-semibold text-gray-600 dark:text-zinc-400 uppercase tracking-wide">
                     Selected Categories
                   </Label>
                   <div className="flex flex-wrap gap-2">
@@ -600,14 +602,14 @@ const UploadRecipes = () => {
                         return (
                           <div
                             key={selectedCategories}
-                            className="flex items-center gap-2 bg-gradient-to-r from-orange-500/20 to-red-500/20 border border-orange-400/30 rounded-full px-4 py-2"
+                            className="flex items-center gap-2 bg-gradient-to-r from-orange-500/20 to-red-500/20 dark:from-orange-400/20 dark:to-red-400/20 border border-orange-500/30 dark:border-orange-400/30 rounded-full px-4 py-2"
                           >
                             <span className="text-sm">{emoji}</span>
-                            <span className="text-gray-100 font-medium text-sm">
+                            <span className="text-gray-900 dark:text-zinc-100 font-medium text-sm">
                               {displayName}
                             </span>
                             {isCustom && (
-                              <span className="text-xs bg-purple-500/20 text-purple-300 px-2 py-0.5 rounded-full">
+                              <span className="text-xs bg-purple-500/20 dark:bg-purple-400/20 text-purple-600 dark:text-purple-300 px-2 py-0.5 rounded-full">
                                 Custom
                               </span>
                             )}
@@ -616,7 +618,7 @@ const UploadRecipes = () => {
                               variant="ghost"
                               size="sm"
                               onClick={() => removeCategory()} //remove the category
-                              className="h-5 w-5 p-0 hover:bg-red-400/20 text-gray-400 hover:text-red-400"
+                              className="h-5 w-5 p-0 hover:bg-red-500/20 dark:hover:bg-red-400/20 text-gray-600 dark:text-zinc-400 hover:text-red-600 dark:hover:text-red-400"
                             >
                               <X className="h-3 w-3" />
                             </Button>
@@ -631,14 +633,14 @@ const UploadRecipes = () => {
 
             {/* Cooking Details Section */}
             <div className="space-y-6">
-              <Label className="text-xl font-bold text-woodsmoke-100">
+              <Label className="text-xl font-bold text-gray-900 dark:text-zinc-100">
                 Cooking Details
               </Label>
               <div className="grid md:grid-cols-3 gap-6">
                 <div className="space-y-3">
                   <Label
                     htmlFor="cooking-time"
-                    className="text-sm font-semibold text-woodsmoke-300 uppercase tracking-wide"
+                    className="text-sm font-semibold text-gray-600 dark:text-zinc-400 uppercase tracking-wide"
                   >
                     Cooking Time (minutes)
                   </Label>
@@ -646,7 +648,7 @@ const UploadRecipes = () => {
                     id="cooking-time"
                     type="number"
                     placeholder="30"
-                    className="bg-woodsmoke-800 border-woodsmoke-600 text-woodsmoke-100 placeholder:text-woodsmoke-400 focus:border-woodsmoke-400 h-12"
+                    className="bg-white dark:bg-neutral-800 border-gray-300 dark:border-neutral-700 text-gray-900 dark:text-zinc-100 placeholder:text-gray-600 dark:placeholder:text-zinc-400 focus:border-sky-500 dark:focus:border-sky-400 h-12"
                     value={cookingTime}
                     onChange={(e) => setCookingTime(Number(e.target.value))}
                   />
@@ -654,7 +656,7 @@ const UploadRecipes = () => {
                 <div className="space-y-3">
                   <Label
                     htmlFor="servings"
-                    className="text-sm font-semibold text-woodsmoke-300 uppercase tracking-wide"
+                    className="text-sm font-semibold text-gray-600 dark:text-zinc-400 uppercase tracking-wide"
                   >
                     Servings
                   </Label>
@@ -662,38 +664,38 @@ const UploadRecipes = () => {
                     id="servings"
                     type="number"
                     placeholder="4"
-                    className="bg-woodsmoke-800 border-woodsmoke-600 text-woodsmoke-100 placeholder:text-woodsmoke-400 focus:border-woodsmoke-400 h-12"
+                    className="bg-white dark:bg-neutral-800 border-gray-300 dark:border-neutral-700 text-gray-900 dark:text-zinc-100 placeholder:text-gray-600 dark:placeholder:text-zinc-400 focus:border-sky-500 dark:focus:border-sky-400 h-12"
                     value={serving}
                     onChange={(e) => setServing(Number(e.target.value))}
                   />
                 </div>
                 <div className="space-y-3">
-                  <Label className="text-sm font-semibold text-woodsmoke-300 uppercase tracking-wide">
+                  <Label className="text-sm font-semibold text-gray-600 dark:text-zinc-400 uppercase tracking-wide">
                     Difficulty
                   </Label>
                   <Select
                     value={difficulty}
                     onValueChange={(value) => setDifficulty(value)}
                   >
-                    <SelectTrigger className="min-w-[200px] min-h-11  bg-woodsmoke-800 border-woodsmoke-600 text-woodsmoke-100 focus:border-woodsmoke-400 h-12">
+                    <SelectTrigger className="min-w-[200px] min-h-11 bg-white dark:bg-neutral-800 border-gray-300 dark:border-neutral-700 text-gray-900 dark:text-zinc-100 focus:border-sky-500 dark:focus:border-sky-400 h-12">
                       <SelectValue placeholder="Select difficulty" />
                     </SelectTrigger>
-                    <SelectContent className="bg-woodsmoke-800 border-woodsmoke-600">
+                    <SelectContent className="bg-white dark:bg-neutral-800 border-gray-300 dark:border-neutral-700">
                       <SelectItem
                         value="easy"
-                        className="text-woodsmoke-100 focus:bg-woodsmoke-700"
+                        className="text-gray-900 dark:text-zinc-100 focus:bg-gray-50 dark:focus:bg-neutral-700"
                       >
                         Easy
                       </SelectItem>
                       <SelectItem
                         value="medium"
-                        className="text-woodsmoke-100 focus:bg-woodsmoke-700"
+                        className="text-gray-900 dark:text-zinc-100 focus:bg-gray-50 dark:focus:bg-neutral-700"
                       >
                         Medium
                       </SelectItem>
                       <SelectItem
                         value="hard"
-                        className="text-woodsmoke-100 focus:bg-woodsmoke-700 "
+                        className="text-gray-900 dark:text-zinc-100 focus:bg-gray-50 dark:focus:bg-neutral-700"
                       >
                         Hard
                       </SelectItem>
@@ -708,7 +710,7 @@ const UploadRecipes = () => {
               <Button
                 type="submit"
                 size="lg"
-                className="w-full font-bold py-4 text-xl text-woodsmoke-100 bg-woodsmoke-700 hover:bg-woodsmoke-600 shadow-2xl transform hover:scale-[1.02] transition-all duration-200"
+                className="w-full font-bold py-4 text-xl text-white bg-green-600 hover:bg-green-700 dark:bg-green-500 dark:hover:bg-green-600 shadow-2xl transform hover:scale-[1.02] transition-all duration-200"
                 onClick={uploadImageAndRecipe}
               >
                 {isPending ? (

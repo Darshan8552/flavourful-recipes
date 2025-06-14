@@ -86,10 +86,18 @@ export const getCategoryName = cache(async (id: string) => {
 export const getRecipesForLandingPage = cache(async () => {
   try {
     await connectToDatabase();
-    return (await RecipeModel.find({})
-      .sort({ createdAt: -1 })
+    const recipes = await RecipeModel.find({ isPublished: true })
+      .sort({ likeCount: -1, views: -1 })
       .limit(3)
-      .exec()) as IRecipe[];
+      .lean()
+      .exec();
+
+    return recipes.map((recipe: any) => ({
+      ...recipe,
+      _id: recipe._id.toString(),
+      createdBy: recipe.createdBy?.toString?.() ?? recipe.createdBy,
+      category: recipe.category?.toString?.() ?? recipe.category,
+    })) as IRecipe[];
   } catch (error) {
     console.error("Error fetching recipes for landing page:", error);
   }
@@ -201,8 +209,6 @@ export async function getSimilarRecipes(
       .limit(limit)
       .lean()
       .exec();
-
-    // Type assertion and transformation to ensure proper structure
     return similarRecipes.map((recipe: any) => ({
       _id: recipe._id.toString(),
       title: recipe.title,

@@ -1,11 +1,12 @@
 "use client";
+
 import { 
   Home, 
   Users, 
   BookOpen, 
   Plus, 
   List, 
-  Settings 
+  LogOut
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -45,10 +46,10 @@ export function AdminSidebar() {
       isActive: pathName === "/categories",
     },
     {
-      title: "Settings",
-      url: "/settings",
-      icon: Settings,
-      isActive: pathName === "/settings",
+      title: "Landing Page",
+      url: "/",
+      icon: LogOut,
+      isActive: pathName === "/",
     },
   ];
 
@@ -73,6 +74,7 @@ export function AdminSidebar() {
                 ? 'bg-gray-300 text-gray-700' 
                 : 'text-gray-300 hover:bg-[#363636] hover:text-white'
               }
+              ${item.url === "/" ? "text-red-700" : ""}
             `}
           >
             <item.icon className="w-5 h-5 mr-3" />

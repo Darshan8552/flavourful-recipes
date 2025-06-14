@@ -23,7 +23,7 @@ interface PageProps {
 export default async function Page({ params }: PageProps) {
   const session = await getSession();
   const userId = session?.user.id as string;
-  const { id } = await params; // This line is correct - await the params Promise
+  const { id } = await params;
 
   const recipe = await getRecipeById(id, userId);
   if (!recipe) return <h1>Recipe not found</h1>;
@@ -157,7 +157,6 @@ export default async function Page({ params }: PageProps) {
             )}
           </div>
         </div>
-        {/* Comments Section */}
         <CommentsSection
           recipeId={recipe._id.toString()}
           userId={userId}

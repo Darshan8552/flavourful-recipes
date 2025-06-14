@@ -28,19 +28,33 @@ export function DeleteAlertDialog() {
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
-        <Button variant="customeDelete">Delete</Button>
+        <Button 
+          variant="destructive" 
+          className="bg-red-600 dark:bg-red-500 hover:bg-red-700 dark:hover:bg-red-600 text-white font-medium"
+        >
+          Delete
+        </Button>
       </AlertDialogTrigger>
-      <AlertDialogContent>
+      <AlertDialogContent className="bg-white dark:bg-neutral-800 border-gray-300 dark:border-neutral-600">
         <AlertDialogHeader>
-          <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-          <AlertDialogDescription>
+          <AlertDialogTitle className="text-gray-900 dark:text-zinc-100">
+            Are you absolutely sure?
+          </AlertDialogTitle>
+          <AlertDialogDescription className="text-slate-600 dark:text-zinc-400">
             This action cannot be undone. This will permanently delete your
             account and remove your data from our servers.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
-          <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction onClick={handleDeleteAccount}>Continue</AlertDialogAction>
+          <AlertDialogCancel className="border-gray-300 dark:border-neutral-600 text-gray-900 dark:text-zinc-100 hover:bg-gray-100 dark:hover:bg-neutral-700">
+            Cancel
+          </AlertDialogCancel>
+          <AlertDialogAction 
+            onClick={handleDeleteAccount}
+            className="bg-red-600 dark:bg-red-500 hover:bg-red-700 dark:hover:bg-red-600 text-white"
+          >
+            Continue
+          </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>

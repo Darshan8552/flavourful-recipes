@@ -23,11 +23,18 @@ const LoadingButton = ({
     <Button
       onClick={onClick}
       disabled={isLoading}
-      className={className}
+      className={`${className} ${isLoading ? 'opacity-70 cursor-not-allowed' : ''}`}
       variant={variant}
       type={type}
     >
-      {isLoading ? <Loader className="animate-spin h-4 w-4" /> : children}
+      {isLoading ? (
+        <div className="flex items-center gap-2">
+          <Loader className="animate-spin h-4 w-4" />
+          <span>Loading...</span>
+        </div>
+      ) : (
+        children
+      )}
     </Button>
   );
 };

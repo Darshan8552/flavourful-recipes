@@ -72,8 +72,8 @@ const PreviewRecipe = ({ recipe }: PreviewRecipeProps) => {
         <div className="flex flex-col mt-6 w-full">
           <h1 className="text-2xl font-semibold">Ingredients</h1>
           <div className="mt-4 dark:text-[#a6b3a2]">
-            {recipe.ingredients.map((ingredient: string) => (
-              <div className="flex items-center mb-4" key={ingredient}>
+            {recipe.ingredients.map((ingredient: string, index: number) => (
+              <div className="flex items-center mb-4" key={index}>
                 <Checkbox id={ingredient} />
                 <Label htmlFor={ingredient} className="ml-2">
                   {ingredient}

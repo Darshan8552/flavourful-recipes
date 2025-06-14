@@ -22,7 +22,6 @@ import DifficultyChart from "@/components/admin/dashboard/DifficultyChart";
 import RecipeTypeChart from "@/components/admin/dashboard/RecipeTypeChart";
 import GrowthChart from "@/components/admin/dashboard/GrowthChart";
 
-
 const Dashboard = async () => {
   const [userStats, recipeStats, engagementStats, growthStats, topRecipes] =
     await Promise.all([
@@ -35,16 +34,15 @@ const Dashboard = async () => {
 
   return (
     <div className="min-h-screen flex  flex-col w-full space-y-6 mt-6">
-        {/* Header */}
-        <div className=" space-y-2">
-          <h1 className="text-4xl font-bold text-woodsmoke-200">Admin Dashboard</h1>
-          <p className="text-woodsmoke-300">
-            Monitor your platform&apos;s performance and user engagement
-          </p>
-        </div>
+      <div className=" space-y-2">
+        <h1 className="text-4xl font-bold text-woodsmoke-200">
+          Admin Dashboard
+        </h1>
+        <p className="text-woodsmoke-300">
+          Monitor your platform&apos;s performance and user engagement
+        </p>
+      </div>
       <Card className="w-full flex mx-auto space-y-8 p-6">
-
-        {/* Main Stats Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           <StatsCard
             title="Total Users"
@@ -76,7 +74,6 @@ const Dashboard = async () => {
           />
         </div>
 
-        {/* Secondary Stats */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <Card>
             <CardHeader>
@@ -176,21 +173,18 @@ const Dashboard = async () => {
           </Card>
         </div>
 
-        {/* Charts Section */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           <RecipeTypeChart data={recipeStats.byType} />
           <DifficultyChart data={recipeStats.byDifficulty} />
         </div>
 
         <div className="w-full flex gap-4">
-          {/* Growth Chart */}
-        <GrowthChart
-          userGrowth={growthStats.userGrowth}
-          recipeGrowth={growthStats.recipeGrowth}
-        />
+          <GrowthChart
+            userGrowth={growthStats.userGrowth}
+            recipeGrowth={growthStats.recipeGrowth}
+          />
 
-        {/* Top Recipes */}
-        <TopRecipesList recipes={topRecipes} />
+          <TopRecipesList recipes={topRecipes} />
         </div>
       </Card>
     </div>
